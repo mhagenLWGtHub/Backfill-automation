@@ -1,54 +1,396 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Send to Webhook</title>
+  <meta charset="utf-8" />
+  <title>Login + Food Catalog</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    :root{
+      --bg:#f5f6f7;
+      --card:#ffffff;
+      --accent:#007bff;
+      --muted:#666;
+    }
+    body{
+      margin:0;
+      font-family:Inter, Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:#111;
+      -webkit-font-smoothing:antialiased;
     }
 
-    button {
-      font-size: 18px;
-      padding: 15px 30px;
-      background: #28a745;
-      color: #fff;
-      border: none;
-      cursor: pointer;
+    /* Centered container */
+    .center {
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
     }
+
+    /* Card */
+    .card{
+      background:var(--card);
+      width:100%;
+      max-width:980px;
+      border-radius:12px;
+      box-shadow:0 6px 20px rgba(20,20,20,0.08);
+      padding:28px;
+    }
+
+    h1 { margin:0 0 12px 0; text-align:center; }
+    .small { color:var(--muted); font-size:13px; text-align:center; margin-bottom:18px; }
+
+    /* Login form */
+    .form-row{ display:flex; gap:12px; margin-bottom:12px; }
+    input[type="text"], input[type="password"], .search {
+      flex:1;
+      padding:12px 14px;
+      border:1px solid #ddd;
+      border-radius:6px;
+      font-size:15px;
+    }
+    button {
+      padding:10px 14px;
+      border-radius:8px;
+      border:none;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .btn-primary { background:var(--accent); color:#fff; }
+    .btn-ghost { background:transparent; color:var(--accent); border:1px solid #e1e7ff; }
+
+    .error { color:#d23; margin-top:8px; text-align:center; }
+
+    /* Main app layout */
+    .topbar {
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+    .search { min-width:0; }
+    .controls { margin-left:auto; display:flex; gap:8px; align-items:center; }
+
+    .grid {
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:16px;
+    }
+    .box {
+      background:#fff;
+      border-radius:10px;
+      padding:12px;
+      border:1px solid #eee;
+      min-height:240px;
+    }
+    .box h3 { margin:0 0 8px 0; display:flex; align-items:center; justify-content:space-between; }
+    .items { display:flex; flex-direction:column; gap:8px; margin-top:6px; }
+
+    .item {
+      padding:10px;
+      border-radius:8px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      cursor:pointer;
+      border:1px solid rgba(0,0,0,0.06);
+      color:#fff;
+      user-select:none;
+    }
+    .item .meta { font-size:13px; color:rgba(255,255,255,0.9); opacity:0.9; }
+    .item .secondary { font-size:12px; opacity:0.9; color:rgba(255,255,255,0.85); }
+    .item.selected { outline:3px solid rgba(0,0,0,0.06); transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+
+    /* responsive */
+    @media (max-width:900px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .download-row { margin-top:10px; display:flex; gap:8px; }
+    .muted-note { font-size:13px; color:#666; margin-top:10px; }
   </style>
 </head>
 <body>
+  <div class="center">
+    <div class="card" id="card">
+      <!-- LOGIN VIEW -->
+      <div id="loginView">
+        <h1>Login</h1>
+        <p class="small">Enter credentials to access the Food Catalog (case-insensitive).</p>
 
-  <button onclick="sendWebhook()">Send to Webhook</button>
+        <div style="max-width:540px;margin:0 auto;">
+          <div class="form-row">
+            <input id="username" type="text" placeholder="Username (eg. User)" />
+            <input id="password" type="password" placeholder="Password (eg. Admin)" />
+          </div>
 
-  <script>
-    function sendWebhook() {
-      const username = localStorage.getItem("username");
-      const password = localStorage.getItem("password");
+          <div style="display:flex;gap:8px;justify-content:center;">
+            <button class="btn-primary" onclick="login()">Login</button>
+            <button class="btn-ghost" onclick="prefill()">Prefill</button>
+          </div>
+          <div id="error" class="error" aria-live="polite"></div>
+        </div>
+      </div>
 
-      fetch("https://hook.eu2.make.com/v1pq77664srkkgof9ff5vtgd1jdhn6g5", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password
-        })
-      })
-      .then(response => {
-        alert("Webhook sent successfully!");
-      })
-      .catch(error => {
-        alert("Error sending webhook");
-      });
-    }
-  </script>
+      <!-- APP VIEW -->
+      <div id="appView" style="display:none;">
+        <h1>Food Catalog</h1>
+        <p class="small">Search by name, type (fruits / vegetables / meat) or attribute (sweet / sour / savory)</p>
 
+        <div class="topbar">
+          <input id="search" class="search" placeholder="Search (e.g. sweet, sour, fruits, apple, meat)" oninput="renderFiltered()" />
+          <div class="controls">
+            <button onclick="downloadFiltered()" class="btn-primary">Download Filtered CSV</button>
+            <button onclick="clearSelection()" style="background:#f0f0f0;padding:10px;border-radius:8px;">Clear Selection</button>
+            <button onclick="logout()" style="background:#fff;border:1px solid #ddd;padding:10px;border-radius:8px;">Logout</button>
+          </div>
+        </div>
+
+        <div class="grid" id="boxes">
+          <!-- Boxes are rendered by JS -->
+        </div>
+
+        <div class="muted-note">Tip: click an item to select it. Use the category Download button to export that category, or use "Download Filtered CSV" to export what's currently shown by the search.</div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+/* ---------------------------
+  Credentials (case-insensitive)
+   - Accepts USER / ADMIN (any case)
+----------------------------*/
+function login(){
+  const u = document.getElementById('username').value.trim().toUpperCase();
+  const p = document.getElementById('password').value.trim().toUpperCase();
+  if(u === 'USER' && p === 'ADMIN'){
+    // store original-cased values too if you want
+    localStorage.setItem('username', u);
+    localStorage.setItem('password', p);
+    showApp();
+  } else {
+    document.getElementById('error').textContent = 'Invalid credentials.';
+  }
+}
+
+function prefill(){
+  document.getElementById('username').value = 'User';
+  document.getElementById('password').value = 'Admin';
+}
+
+function logout(){
+  localStorage.removeItem('username');
+  localStorage.removeItem('password');
+  document.getElementById('appView').style.display='none';
+  document.getElementById('loginView').style.display='block';
+  document.getElementById('username').value='';
+  document.getElementById('password').value='';
+  document.getElementById('error').textContent='';
+}
+
+/* ---------------------------
+  Data model: name, type, attr (e.g. taste)
+  We'll make fruits & vegetables colored differently (varied colors)
+----------------------------*/
+const data = [
+  // Fruits (5)
+  { name:'Apple', type:'Fruit', attr:'sweet' },
+  { name:'Lemon', type:'Fruit', attr:'sour' },
+  { name:'Mango', type:'Fruit', attr:'sweet' },
+  { name:'Blueberry', type:'Fruit', attr:'sweet' },
+  { name:'Orange', type:'Fruit', attr:'citrus' },
+
+  // Vegetables (5)
+  { name:'Carrot', type:'Vegetable', attr:'sweet' },
+  { name:'Spinach', type:'Vegetable', attr:'leafy' },
+  { name:'Broccoli', type:'Vegetable', attr:'bitter' },
+  { name:'Tomato', type:'Vegetable', attr:'savory' },
+  { name:'Cucumber', type:'Vegetable', attr:'fresh' },
+
+  // Meats (5)
+  { name:'Chicken', type:'Meat', attr:'savory' },
+  { name:'Beef', type:'Meat', attr:'savory' },
+  { name:'Pork', type:'Meat', attr:'savory' },
+  { name:'Lamb', type:'Meat', attr:'gamey' },
+  { name:'Turkey', type:'Meat', attr:'savory' }
+];
+
+/* unique colors per fruit and vegetable */
+const fruitColors = ['#ff6b6b','#ff9f43','#ff8ad2','#ffb86b','#6bc9ff'];
+const vegColors   = ['#6be28a','#4ade80','#9be86b','#b2ff9e','#7fd3a5'];
+const meatColor   = '#d98a8a'; // same for meats
+
+// track selections
+let selected = new Set();
+
+function showApp(){
+  document.getElementById('loginView').style.display='none';
+  document.getElementById('appView').style.display='block';
+  renderBoxes();
+  renderFiltered();
+}
+
+/* group data by type */
+function groupByType(){
+  const groups = { Fruit:[], Vegetable:[], Meat:[] };
+  for(const item of data) groups[item.type].push(item);
+  return groups;
+}
+
+function renderBoxes(){
+  const groups = groupByType();
+  const boxContainer = document.getElementById('boxes');
+  boxContainer.innerHTML = '';
+
+  // order: Fruits, Vegetables, Meat
+  const order = ['Fruit','Vegetable','Meat'];
+  order.forEach(type => {
+    const box = document.createElement('div');
+    box.className = 'box';
+    const header = document.createElement('h3');
+    header.innerHTML = `<span>${type}s</span><span style="font-weight:400;font-size:13px;color:#666;">${groups[type].length} items</span>`;
+    box.appendChild(header);
+
+    const itemsWrap = document.createElement('div');
+    itemsWrap.className = 'items';
+    itemsWrap.id = `items-${type}`;
+
+    // Render items (initially full list)
+    groups[type].forEach((it, idx) => {
+      const el = document.createElement('div');
+      el.className = 'item';
+      el.dataset.name = it.name;
+      el.dataset.type = it.type;
+      el.dataset.attr = it.attr;
+
+      // color mapping
+      let bg = '#ccc';
+      if(it.type === 'Fruit') bg = fruitColors[idx % fruitColors.length];
+      if(it.type === 'Vegetable') bg = vegColors[idx % vegColors.length];
+      if(it.type === 'Meat') bg = meatColor;
+
+      el.style.background = bg;
+      el.innerHTML = `<div><strong>${it.name}</strong><div class="secondary">${it.attr}</div></div>
+                      <div class="meta">${it.type}</div>`;
+
+      el.onclick = () => {
+        toggleSelect(it);
+        el.classList.toggle('selected', selected.has(keyOf(it)));
+      };
+
+      itemsWrap.appendChild(el);
+    });
+
+    // download button for category
+    const downloadRow = document.createElement('div');
+    downloadRow.className = 'download-row';
+    const dlBtn = document.createElement('button');
+    dlBtn.textContent = `Download ${type}s CSV`;
+    dlBtn.onclick = () => downloadCategory(type);
+    dlBtn.className = 'btn-primary';
+    dlBtn.style.padding='8px';
+    downloadRow.appendChild(dlBtn);
+
+    box.appendChild(itemsWrap);
+    box.appendChild(downloadRow);
+    boxContainer.appendChild(box);
+  });
+}
+
+/* helper key */
+function keyOf(it){ return `${it.type}::${it.name}`; }
+function toggleSelect(it){
+  const key = keyOf(it);
+  if(selected.has(key)) selected.delete(key);
+  else selected.add(key);
+}
+
+/* filter rendering based on search input */
+function renderFiltered(){
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const items = document.querySelectorAll('.item');
+  items.forEach(itEl => {
+    const name = itEl.dataset.name.toLowerCase();
+    const type = itEl.dataset.type.toLowerCase();
+    const attr = itEl.dataset.attr.toLowerCase();
+
+    const matches = !q || name.includes(q) || type.includes(q) || attr.includes(q);
+    itEl.style.display = matches ? 'flex' : 'none';
+  });
+}
+
+/* build CSV from array of objects */
+function buildCSV(rows){
+  if(!rows || rows.length===0) return '';
+  const cols = Object.keys(rows[0]);
+  const header = cols.join(',');
+  const lines = rows.map(r => cols.map(c => `"${String(r[c]).replace(/"/g,'""')}"`).join(','));
+  return [header, ...lines].join('\n');
+}
+
+/* download helpers */
+function downloadBlob(filename, text){
+  const blob = new Blob([text], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function downloadCategory(type){
+  const rows = data.filter(d => d.type === type).map(d => ({ name:d.name, type:d.type, attr:d.attr }));
+  const csv = buildCSV(rows);
+  downloadBlob(`${type.toLowerCase()}s.csv`, csv);
+}
+
+function downloadFiltered(){
+  // gather currently visible items (filtered)
+  const visible = Array.from(document.querySelectorAll('.item')).filter(el => el.style.display !== 'none');
+  const rows = visible.map(el => ({ name: el.dataset.name, type: el.dataset.type, attr: el.dataset.attr }));
+  if(rows.length === 0){
+    alert('No items currently filtered to download.');
+    return;
+  }
+  const csv = buildCSV(rows);
+  downloadBlob(`filtered_items.csv`, csv);
+}
+
+/* optional: download only selected */
+function downloadSelected(){
+  const selectedItems = Array.from(selected).map(key => {
+    const [,name] = key.split('::');
+    return data.find(d => d.name === name);
+  }).filter(Boolean).map(d => ({ name:d.name, type:d.type, attr:d.attr }));
+
+  if(selectedItems.length === 0){
+    alert('No items selected.');
+    return;
+  }
+  const csv = buildCSV(selectedItems);
+  downloadBlob('selected_items.csv', csv);
+}
+
+/* clear selection */
+function clearSelection(){
+  selected.clear();
+  document.querySelectorAll('.item.selected').forEach(el => el.classList.remove('selected'));
+}
+
+/* auto-login if already stored */
+(function init(){
+  const u = localStorage.getItem('username'), p = localStorage.getItem('password');
+  if(u && p && u.toUpperCase()==='USER' && p.toUpperCase()==='ADMIN'){
+    showApp();
+  } else {
+    document.getElementById('loginView').style.display='block';
+  }
+})();
+</script>
 </body>
 </html>
