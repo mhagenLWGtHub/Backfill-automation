@@ -1,74 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retell Widget - Module Mode</title>
+    <style>
+        /* --- CSS STYLES --- */
+        #mic-widget-wrapper {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: sans-serif;
+            --mw-primary: #2563eb; 
+            --mw-connecting: #f59e0b;
+            --mw-connected: #dc2626;
+            --mw-white: #ffffff;
+        }
 
-    .login-box {
-      background: #fff;
-      padding: 30px;
-      border-radius: 8px;
-      width: 280px;
-      text-align: center;
-      box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-    }
+        .mic-widget-btn {
+            width: 60px;
+            height: 60px;
+            background-color: var(--mw-primary);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        .mic-widget-btn:hover { transform: scale(1.05); }
+        .mic-widget-icon { width: 28px; height: 28px; fill: var(--mw-white); transition: all 0.3s ease; }
 
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 12px;
-    }
-
-    button {
-      width: 100%;
-      padding: 10px;
-      background: #007bff;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-
-    .error {
-      color: red;
-      margin-top: 10px;
-    }
-  </style>
+        /* States */
+        #mic-widget-wrapper[data-state="connecting"] .mic-widget-btn { background-color: var(--mw-connecting); }
+        #mic-widget-wrapper[data-state="connected"] .mic-widget-btn { background-color: var(--mw-connected); }
+        #mic-widget-wrapper[data-state="idle"] .mic-widget-btn { animation: mw-candle-pulse 3s infinite; }
+        
+        @keyframes mw-candle-pulse { 
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); } 
+            50% { box-shadow: 0 0 25px 0 rgba(37, 99, 235, 0.6); } 
+        }
+    </style>
 </head>
 <body>
 
-  <div class="login-box">
-    <h2>Login</h2>
+    <div id="mic-widget-wrapper" data-state="idle">
+        <button class="mic-widget-btn" id="mw-btn" type="button">
+            <svg class="mic-widget-icon" viewBox="0 0 24 24">
+                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"></path>
+                <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"></path>
+            </svg>
+        </button>
+    </div>
 
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
+    <script type="module">
+        // Import directly from esm.sh (a CDN optimized for modules)
+        import { RetellWebClient } from 'https://esm.sh/retell-client-js-sdk@2.0.7';
 
-    <div class="error" id="error"></div>
-  </div>
+        const RETELL_API_KEY = 'key_263d4fa99ffaa1f2378ec812f5b9'; 
+        const AGENT_ID = 'agent_02001201291209c262161446bd'; 
+        
+        const btn = document.getElementById('mw-btn');
+        const wrapper = document.getElementById('mic-widget-wrapper');
+        
+        // Initialize SDK
+        // We don't need to wait for window.load because imports happen automatically
+        const retellWebClient = new RetellWebClient();
 
-  <script>
-  function login() {
-    const username = document.getElementById("username").value.trim().toUpperCase();
-    const password = document.getElementById("password").value.trim().toUpperCase();
+        // --- Event Listeners ---
+        retellWebClient.on("call_started", () => {
+            console.log("Call Started");
+            wrapper.setAttribute('data-state', 'connected');
+        });
 
-    if (username === "USER" && password === "ADMIN") {
-      localStorage.setItem("username", username);
-      localStorage.setItem("password", password);
-      window.location.href = "webhook.html";
-    } else {
-      document.getElementById("error").innerText = "Invalid credentials.";
-    }
-  }
-</script>
+        retellWebClient.on("call_ended", () => {
+            console.log("Call Ended");
+            wrapper.setAttribute('data-state', 'idle');
+        });
 
+        retellWebClient.on("error", (error) => {
+            console.error("SDK Error:", error);
+            alert("Error: " + (error.message || error));
+            wrapper.setAttribute('data-state', 'idle');
+            retellWebClient.stopCall(); 
+        });
 
+        // --- Click Handler ---
+        btn.addEventListener('click', async () => {
+            const currentState = wrapper.getAttribute('data-state');
+
+            if (currentState === 'idle') {
+                wrapper.setAttribute('data-state', 'connecting');
+                
+                try {
+                    // 1. Get Token
+                    const response = await fetch('https://api.retellai.com/v2/create-web-call', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${RETELL_API_KEY}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ "agent_id": AGENT_ID })
+                    });
+
+                    if (!response.ok) throw new Error(await response.text());
+                    const data = await response.json();
+
+                    // 2. Start Call
+                    await retellWebClient.startCall({
+                        accessToken: data.access_token,
+                        sampleRate: 24000,
+                        captureDeviceId: "default"
+                    });
+
+                } catch (err) {
+                    console.error(err);
+                    alert("Connection Failed: " + err.message);
+                    wrapper.setAttribute('data-state', 'idle');
+                }
+            } else {
+                retellWebClient.stopCall();
+                wrapper.setAttribute('data-state', 'idle');
+            }
+        });
+    </script>
 </body>
 </html>
