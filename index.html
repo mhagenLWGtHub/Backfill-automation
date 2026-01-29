@@ -1,16 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Open n8n Form</title>
-</head>
-<body>
-<h2>Click the link below to open the form</h2>
-<a href="#" onclick="window.open(
-    'https://leavenwealth.app.n8n.cloud/form/fe2462c2-158c-4bb3-9d0e-9d0277544570',
-    'n8nFormPopup',
-    'width=500,height=700,resizable=yes,scrollbars=yes'
-); return false;">
-  Open n8n Form
-</a>
-</body>
+  <head>
+    <script src="https://dl.frontapp.com/libs/frontjs.min.js"></script>
+    <style>
+      /* This makes the button look nice and big */
+      body { margin: 0; padding: 10px; background: white; }
+      button {
+        background-color: #3165ff; 
+        color: white;
+        border: none;
+        padding: 15px;
+        width: 100%;
+        border-radius: 5px;
+        font-weight: bold;
+        font-family: sans-serif;
+        cursor: pointer;
+      }
+      button:hover { background-color: #1e4bd1; }
+    </style>
+  </head>
+  <body>
+
+    <button id="btn">Open n8n Form</button>
+
+    <script>
+      // This part listens for your click
+      window.Front.on('conversation', function (context) {
+        document.getElementById('btn').onclick = function() {
+          // This command forces the link to open in a NEW TAB
+          window.Front.openUrl({
+            url: 'https://leavenwealth.app.n8n.cloud/form/fe2462c2-158c-4bb3-9d0e-9d0277544570'
+          });
+        };
+      });
+    </script>
+  </body>
+</html><!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://dl.frontapp.com/libs/frontjs.min.js"></script>
+    <style>
+      /* This makes the button look nice and big */
+      body { margin: 0; padding: 10px; background: white; }
+      button {
+        background-color: #3165ff; 
+        color: white;
+        border: none;
+        padding: 15px;
+        width: 100%;
+        border-radius: 5px;
+        font-weight: bold;
+        font-family: sans-serif;
+        cursor: pointer;
+      }
+      button:hover { background-color: #1e4bd1; }
+    </style>
+  </head>
+  <body>
+
+    <button id="btn">Open n8n Form</button>
+
+    <script>
+      // This part listens for your click
+      window.Front.on('conversation', function (context) {
+        document.getElementById('btn').onclick = function() {
+          // This command forces the link to open in a NEW TAB
+          window.Front.openUrl({
+            url: 'https://leavenwealth.app.n8n.cloud/form/fe2462c2-158c-4bb3-9d0e-9d0277544570'
+          });
+        };
+      });
+    </script>
+  </body>
 </html>
