@@ -3,9 +3,8 @@
   <head>
     <script src="https://dl.frontapp.com/libs/frontjs.min.js"></script>
     <style>
-      /* This makes the button look nice and big */
-      body { margin: 0; padding: 10px; background: white; }
-      button {
+      body { margin: 0; padding: 10px; background: white; font-family: sans-serif; }
+      #btn {
         background-color: #3165ff; 
         color: white;
         border: none;
@@ -13,10 +12,10 @@
         width: 100%;
         border-radius: 5px;
         font-weight: bold;
-        font-family: sans-serif;
+        font-size: 14px;
         cursor: pointer;
       }
-      button:hover { background-color: #1e4bd1; }
+      #btn:hover { background-color: #1e4bd1; }
     </style>
   </head>
   <body>
@@ -24,51 +23,17 @@
     <button id="btn">Open n8n Form</button>
 
     <script>
-      // This part listens for your click
-      window.Front.on('conversation', function (context) {
-        document.getElementById('btn').onclick = function() {
-          // This command forces the link to open in a NEW TAB
-          window.Front.openUrl({
-            url: 'https://leavenwealth.app.n8n.cloud/form/fe2462c2-158c-4bb3-9d0e-9d0277544570'
-          });
-        };
-      });
-    </script>
-  </body>
-</html><!DOCTYPE html>
-<html>
-  <head>
-    <script src="https://dl.frontapp.com/libs/frontjs.min.js"></script>
-    <style>
-      /* This makes the button look nice and big */
-      body { margin: 0; padding: 10px; background: white; }
-      button {
-        background-color: #3165ff; 
-        color: white;
-        border: none;
-        padding: 15px;
-        width: 100%;
-        border-radius: 5px;
-        font-weight: bold;
-        font-family: sans-serif;
-        cursor: pointer;
-      }
-      button:hover { background-color: #1e4bd1; }
-    </style>
-  </head>
-  <body>
+      const formUrl = 'https://leavenwealth.app.n8n.cloud/form/fe2462c2-158c-4bb3-9d0e-9d0277544570';
 
-    <button id="btn">Open n8n Form</button>
-
-    <script>
-      // This part listens for your click
-      window.Front.on('conversation', function (context) {
-        document.getElementById('btn').onclick = function() {
-          // This command forces the link to open in a NEW TAB
-          window.Front.openUrl({
-            url: 'https://leavenwealth.app.n8n.cloud/form/fe2462c2-158c-4bb3-9d0e-9d0277544570'
-          });
-        };
+      // Attach the click immediately so it never feels "broken"
+      document.getElementById('btn').addEventListener('click', function() {
+        if (window.Front && window.Front.openUrl) {
+          // If we are in Front, use the Front tool
+          window.Front.openUrl({ url: formUrl });
+        } else {
+          // If the Front tool fails, force a standard new window
+          window.open(formUrl, '_blank');
+        }
       });
     </script>
   </body>
