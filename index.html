@@ -2,9 +2,11 @@
 <html>
   <head>
     <script src="https://dl.frontapp.com/libs/frontjs.min.js"></script>
+    
     <style>
-      body { margin: 0; padding: 10px; background: white; font-family: sans-serif; }
-      #btn {
+      /* 2. THE LOOKS: This makes the button big and blue */
+      body { margin: 0; padding: 10px; font-family: sans-serif; }
+      button {
         background-color: #3165ff; 
         color: white;
         border: none;
@@ -12,10 +14,10 @@
         width: 100%;
         border-radius: 5px;
         font-weight: bold;
-        font-size: 14px;
+        font-size: 16px;
         cursor: pointer;
       }
-      #btn:hover { background-color: #1e4bd1; }
+      button:hover { background-color: #1e4bd1; }
     </style>
   </head>
   <body>
@@ -25,13 +27,13 @@
     <script>
       const formUrl = 'https://leavenwealth.app.n8n.cloud/form/fe2462c2-158c-4bb3-9d0e-9d0277544570';
 
-      // Attach the click immediately so it never feels "broken"
+      // This waits for the button to be clicked
       document.getElementById('btn').addEventListener('click', function() {
+        // Try to open via Front SDK first
         if (window.Front && window.Front.openUrl) {
-          // If we are in Front, use the Front tool
           window.Front.openUrl({ url: formUrl });
         } else {
-          // If the Front tool fails, force a standard new window
+          // If that fails, force a new browser tab
           window.open(formUrl, '_blank');
         }
       });
