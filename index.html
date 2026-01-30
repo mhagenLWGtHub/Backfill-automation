@@ -253,34 +253,43 @@
 
         } catch (error) {
           console.error("Error:", error);
-          // If error (like timeout or network), user can click cancel.
+          // Allow spinner to persist or handle error as preferred
         }
       }
 
-      // --- UPDATED RENDER FOLDERS ---
+      // --- RENDER FOLDERS (FIXED) ---
       function renderFolders(dataList) {
         const container = document.getElementById('folders-container');
         container.innerHTML = ''; 
+        
+        // Debugging log to see exactly what arrived
+        console.log("Received Data:", dataList);
 
-        if (!Array.isArray(dataList)) {
+        // Handle case where dataList is null or undefined
+        if (!dataList) {
            container.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">No data received.</div>';
            return;
+        }
+
+        // If n8n returns a single object instead of an array, wrap it
+        if (!Array.isArray(dataList)) {
+            dataList = [dataList];
         }
 
         let hasItems = false;
 
         // 1. Folders -> Fetch Lists
         dataList.forEach(item => {
-          // CHECK FOR: Array name OR String name
           let itemName = item.name;
-          
-          // Fix: Handle if name is an Array like ["No Folders in this list"]
+
+          // FIX: If "name" is an array ["No Folders..."], extract the string
           if (Array.isArray(itemName) && itemName.length > 0) {
              itemName = itemName[0];
           }
 
-          // IGNORE if it says "No Folders..."
+          // Check if valid string
           if (itemName && 
+              typeof itemName === 'string' &&
               itemName !== "No Folders in this list" && 
               itemName !== "no folder in this space") {
             
@@ -295,11 +304,14 @@
         // 2. Folderless -> Fetch Tasks
         dataList.forEach(item => {
           if (item.folderless && Array.isArray(item.folderless) && item.folderless.length > 0) {
+            
+            // Render Header
             const label = document.createElement('div');
             label.className = 'section-label';
             label.innerText = 'Folderless List';
             container.appendChild(label);
 
+            // Render Buttons
             item.folderless.forEach(listName => {
               const btn = document.createElement('button');
               btn.innerText = listName;
@@ -311,8 +323,7 @@
           }
         });
 
-        // 3. EMPTY STATE CHECK
-        // If we looped through everything and found no valid folders or lists:
+        // 3. Empty State Check
         if (!hasItems) {
             container.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">No lists in this space</div>';
         }
@@ -350,10 +361,11 @@
         const container = document.getElementById('lists-container');
         container.innerHTML = ''; 
 
-        if (!Array.isArray(dataList) || dataList.length === 0) {
+        if (!dataList) {
            container.innerHTML = '<div style="text-align:center; color:#888;">No lists found.</div>';
            return;
         }
+        if (!Array.isArray(dataList)) dataList = [dataList];
 
         dataList.forEach(item => {
           const btn = document.createElement('button');
@@ -396,10 +408,11 @@
         const container = document.getElementById('tasks-container');
         container.innerHTML = ''; 
 
-        if (!Array.isArray(dataList) || dataList.length === 0) {
+        if (!dataList) {
            container.innerHTML = '<div style="text-align:center; color:#888;">No tasks found.</div>';
            return;
         }
+        if (!Array.isArray(dataList)) dataList = [dataList];
 
         dataList.forEach(item => {
           const btn = document.createElement('button');
