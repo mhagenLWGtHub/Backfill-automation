@@ -27,18 +27,6 @@
       .action-btn { text-align: center; }
       .action-btn:hover { padding-left: 15px; }
 
-      /* --- TRANSPARENT BUTTONS (Folderless) --- */
-      .transparent-btn {
-        background-color: transparent !important;
-        border: none !important;
-        color: #999; margin-bottom: 2px; padding-left: 0;
-      }
-      .transparent-btn:hover {
-        background-color: #444444 !important; 
-        color: white !important; 
-        border-radius: 6px; padding-left: 15px; 
-      }
-
       /* --- FORM STYLES --- */
       label { display: block; color: #888; font-size: 12px; margin-bottom: 5px; margin-top: 15px; }
       input, textarea, select {
@@ -56,10 +44,6 @@
       .submit-btn:hover { background-color: #254eda; padding-left: 15px; }
 
       /* --- UTILITIES --- */
-      .section-label {
-        color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
-        margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 5px;
-      }
       h3 { margin: 0 0 15px 0; font-size: 16px; color: white; text-align: center; }
       .hidden { display: none; }
       .back-link {
@@ -91,28 +75,34 @@
     </div>
 
     <div id="step-2" class="hidden">
-      <h3>Which space is the task located?</h3>
+      <h3>Select a Space</h3>
       <div id="space-list">
-        <button onclick="handleSpaceClick('Acquisitions')">Acquisitions</button>
         <button onclick="handleSpaceClick('Marketing')">Marketing</button>
         <button onclick="handleSpaceClick('Asset Management')">Asset Management</button>
         <button onclick="handleSpaceClick('Finance')">Finance</button>
-        <button onclick="handleSpaceClick('Insurance')">Insurance</button>
-        <button onclick="handleSpaceClick('Human Resource')">Human Resource</button>
+        <button onclick="handleSpaceClick('Human Resources')">Human Resources</button>
         <button onclick="handleSpaceClick('Legal')">Legal</button>
-        <button onclick="handleSpaceClick('Operations')">Operations</button>
-        <button onclick="handleSpaceClick('Company Owners')">Company Owners</button>
         <button onclick="handleSpaceClick('Training')">Training</button>
         <button onclick="handleSpaceClick('Investor Relations')">Investor Relations</button>
         <button onclick="handleSpaceClick('Capital Raising')">Capital Raising</button>
-        <button onclick="handleSpaceClick('CCM')">CCM (Chris & Colin)</button>
+        <button onclick="handleSpaceClick('Operations')">Operations</button>
+        <button onclick="handleSpaceClick('CCM')">CCM</button>
+        <button onclick="handleSpaceClick('Pricing Column')">Pricing Column</button>
         <button onclick="handleSpaceClick('SOP and Templates')">SOP and Templates</button>
         <button onclick="handleSpaceClick('Pref Equity Brokers')">Pref Equity Brokers</button>
         <button onclick="handleSpaceClick('Enterprise Risk Mgmt')">Enterprise Risk Mgmt</button>
-        <button onclick="handleSpaceClick('Chris Properties')">Chris Properties / PGO LLS Ops</button>
+        <button onclick="handleSpaceClick('Chris Properties')">Chris Properties</button>
+        <button onclick="handleSpaceClick('PGO')">PGO</button>
+        <button onclick="handleSpaceClick('LLS Operations')">LLS Operations</button>
         <button onclick="handleSpaceClick('Chris Mitch')">Chris Mitch</button>
       </div>
       <a class="back-link" onclick="goBack(1)">← Back to Start</a>
+    </div>
+
+    <div id="folders-view" class="hidden">
+      <h3>Select a Folder</h3>
+      <div id="folders-container"></div>
+      <a class="back-link" onclick="goBack(2)">← Back to Spaces</a>
     </div>
 
     <div id="loading-view" class="hidden">
@@ -123,26 +113,14 @@
       <a class="back-link" onclick="goBack('loading')">Cancel</a>
     </div>
 
-    <div id="folders-view" class="hidden">
-      <h3>Select a Folder</h3>
-      <div id="folders-container"></div>
-      <a class="back-link" onclick="goBack(2)">← Back to Spaces</a>
-    </div>
-
-    <div id="lists-view" class="hidden">
-      <h3>Select a List</h3>
-      <div id="lists-container"></div>
+    <div id="items-view" class="hidden">
+      <h3 id="items-title">Select Item</h3>
+      <div id="items-container"></div>
       <a class="back-link" onclick="goBack(3)">← Back to Folders</a>
     </div>
 
-    <div id="tasks-view" class="hidden">
-      <h3>Select a Task</h3>
-      <div id="tasks-container"></div>
-      <a class="back-link" onclick="goBack(4)">← Back to Lists</a>
-    </div>
-
     <div id="form-view" class="hidden">
-      <h3 id="form-title">Create a New Task</h3>
+      <h3>Create a New Task</h3>
       
       <label>Title <span style="color:#ff5555">*</span></label>
       <input type="text" id="task-title" placeholder="Enter task title...">
@@ -190,25 +168,47 @@
       // === CONFIGURATION ===
       const WEBHOOK_URL = 'https://leavenwealth.app.n8n.cloud/webhook/4fa80722-bad9-4b29-b5e2-8fd23cff22af'; 
 
+      // === HARDCODED FOLDER DATA ===
+      const spaceData = {
+        "Marketing": ["Marketing tasks", "Marketing resources"],
+        "Asset Management": ["Asset Management", "Asset Management Folder"],
+        "Finance": ["Accounts payable", "Bank accounts", "Bookkeeping", "Loans", "Taxes", "Reporting", "Accounting operations", "Bookkeeping fund", "Miscellaneous finance work", "SPAL Misc finance work", "Trade insurance"],
+        "Human Resources": ["Hiring", "New employee onboarding", "Employee retention", "Payroll"],
+        "Legal": ["Compliance folder", "Prices folder"],
+        "Training": ["LWU", "Clickup", "Onboarding"],
+        "Investor Relations": ["Investor relations"],
+        "Capital Raising": ["CRM"],
+        "Operations": [], // No Folder
+        "CCM": [], // No Folder
+        "Pricing Column": [], // No Folder
+        "SOP and Templates": ["Marketing", "Asset Management", "Finance", "Insurance", "Legal", "Capital Raising", "Operations", "Investor Relations", "Applications", "HR", "Executive"],
+        "Pref Equity Brokers": [], // No Folder
+        "Enterprise Risk Mgmt": ["Properties", "Debt", "Comments", "Insurance", "Risk", "Registrar"],
+        "Chris Properties": [
+            "000-data template", "001-loan data", "7300-Greensland LLC", "BG Champion Partners LLC", "Boulder Bancroft Partners LLC", 
+            "BVBP LLC", "Toperleaf Investments LLC", "Orbs Partners LLC", "DFIU LLC", "Dundee Village LLC", "Eagle Annex LLC", 
+            "Fast Avenue Properties LLC", "Retina Unit LLC", "Heston Point LLC", "Lincoln Portfolio LLC", "Lions Gate Partners LLC", 
+            "Midwest Portfolio 1 LLC", "Midwest Portfolio 2 LLC", "Midwest Portfolio 3 LLC", "Midwest Portfolio 4 LLC", 
+            "Midwest Portfolio 5 LLC", "Midwest Portfolio 7 LLC", "Midwest Portfolio 8 LLC", "MB Brothers LLC", "MCCCS Properties LLC", 
+            "MBD Properties LLC", "OCC Holdings LLC", "Original 3 LLC", "Partners of Australia LLC", "Partners of Park Place LLC", 
+            "Patrick Place Partner LLC", "Reserve Partners LLC", "Red Park 2 LLC", "Red Park LLC", "Redchmar Partners LLC", 
+            "Ridgemar Partners", "Sarpy Douglas Investments", "Skylar Development", "Sunesta (6990 St LLC)", 
+            "Tall Oaks Partners LLC", "The Maples Partner LLC"
+        ],
+        "PGO": ["LLS L10", "Spreads"],
+        "LLS Operations": ["LLS L10"],
+        "Chris Mitch": [] // No Folder
+      };
+
       // === STATE ===
       let currentAction = ''; 
       let currentSpace = '';
       let currentFolder = '';
-      let currentList = '';
-      let currentTask = '';
+      let currentItem = ''; // List or Task ID
 
       // --- NAVIGATION CONTROLLER ---
       function goToStep2(action) {
         currentAction = action;
-        
-        if (action === 'create a new task') {
-            document.getElementById('form-title').innerText = "Create a New Task";
-        } else if (action === 'update task') {
-            document.getElementById('form-title').innerText = "Update Task";
-        } else {
-            document.getElementById('form-title').innerText = "Task Details";
-        }
-
         showView('step-2');
       }
 
@@ -216,160 +216,50 @@
         if (step === 1) showView('step-1');
         else if (step === 2) showView('step-2');
         else if (step === 3) showView('folders-view');
-        else if (step === 4) showView('lists-view');
-        else if (step === 'loading') showView('step-2'); 
-        else if (step === 'form') showView('tasks-view');
+        else if (step === 'loading') showView('folders-view'); 
+        else if (step === 'form') showView('items-view');
       }
 
       function showView(viewId) {
-        const views = ['step-1', 'step-2', 'loading-view', 'folders-view', 'lists-view', 'tasks-view', 'form-view'];
+        const views = ['step-1', 'step-2', 'folders-view', 'loading-view', 'items-view', 'form-view'];
         views.forEach(id => document.getElementById(id).classList.add('hidden'));
         document.getElementById(viewId).classList.remove('hidden');
       }
 
-      // === STEP 2 -> 3: GET FOLDERS ===
-      async function handleSpaceClick(spaceName) {
+      // === STEP 2 -> 3: SELECT SPACE & SHOW HARDCODED FOLDERS ===
+      function handleSpaceClick(spaceName) {
         currentSpace = spaceName;
-        currentFolder = ''; 
-        
-        document.getElementById('loading-text').innerText = "Getting the list of folders...";
-        showView('loading-view');
+        const folders = spaceData[spaceName];
 
-        try {
-          const response = await fetch(WEBHOOK_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-              action: currentAction, 
-              space: spaceName,
-              type: "get folder"
-            })
-          });
-
-          if (!response.ok) throw new Error("Network response was not ok");
-          const data = await response.json(); 
-          renderFolders(data);
-          showView('folders-view');
-
-        } catch (error) {
-          console.error("Error:", error);
-        }
-      }
-
-      // --- RENDER FOLDERS (With Loop Fix) ---
-      function renderFolders(dataList) {
         const container = document.getElementById('folders-container');
         container.innerHTML = ''; 
 
-        if (!dataList) {
-           container.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">No data received.</div>';
-           return;
-        }
-
-        if (!Array.isArray(dataList)) dataList = [dataList];
-
-        let hasItems = false;
-
-        // 1. Folders -> Fetch Lists
-        dataList.forEach(item => {
-            if (item.name) {
-                // HANDLE ARRAY
-                if (Array.isArray(item.name)) {
-                    item.name.forEach(name => {
-                        if (name !== "No Folders in this list" && name !== "no folder in this space") {
-                            createButton(name, container, () => handleFolderClick(name));
-                            hasItems = true;
-                        }
-                    });
-                } 
-                // HANDLE STRING
-                else if (typeof item.name === 'string') {
-                    if (item.name !== "No Folders in this list" && item.name !== "no folder in this space") {
-                        createButton(item.name, container, () => handleFolderClick(item.name));
-                        hasItems = true;
-                    }
-                }
-            }
-        });
-
-        // 2. Folderless -> Fetch Tasks
-        dataList.forEach(item => {
-          if (item.folderless && Array.isArray(item.folderless) && item.folderless.length > 0) {
-            const label = document.createElement('div');
-            label.className = 'section-label';
-            label.innerText = 'Folderless List';
-            container.appendChild(label);
-
-            item.folderless.forEach(listName => {
-              createButton(listName, container, () => handleListClick(listName), true);
+        // CASE A: Space has folders (e.g., Marketing)
+        if (folders && folders.length > 0) {
+            folders.forEach(name => {
+                createButton(name, container, () => handleFolderClick(name));
             });
-            hasItems = true;
-          }
-        });
-
-        if (!hasItems) {
-            container.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">No lists in this space</div>';
+        } 
+        // CASE B: Space has NO folders (e.g., Operations)
+        // We auto-select a dummy folder or pass empty string to the webhook
+        else {
+             createButton("Go to " + spaceName + " Lists", container, () => handleFolderClick(""));
         }
+
+        showView('folders-view');
       }
 
-      // === STEP 3 -> 4: GET LISTS (FIXED with Loop) ===
+      // === STEP 3 -> 4: SELECT FOLDER & CALL WEBHOOK ===
       async function handleFolderClick(folderName) {
         currentFolder = folderName;
-        document.getElementById('loading-text').innerText = "Getting your lists...";
-        showView('loading-view');
+        
+        // DETERMINE WEBHOOK MODE
+        // If Create -> Get List
+        // If Update/Delete -> Get Task
+        const type = (currentAction === 'create a new task') ? "get list" : "get task";
+        const loadingMsg = (type === "get list") ? "Getting lists..." : "Getting tasks...";
 
-        try {
-          const response = await fetch(WEBHOOK_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-              action: currentAction, 
-              space: currentSpace,
-              folder: folderName,
-              type: "get list"
-            })
-          });
-
-          if (!response.ok) throw new Error("Network response was not ok");
-          const data = await response.json(); 
-          renderLists(data);
-          showView('lists-view');
-
-        } catch (error) {
-          console.error("Error:", error);
-        }
-      }
-
-      function renderLists(dataList) {
-        const container = document.getElementById('lists-container');
-        container.innerHTML = ''; 
-
-        if (!dataList) {
-           container.innerHTML = '<div style="text-align:center; color:#888;">No lists found.</div>';
-           return;
-        }
-        if (!Array.isArray(dataList)) dataList = [dataList];
-
-        dataList.forEach(item => {
-            if (item.name) {
-                // LOOP IF ARRAY
-                if (Array.isArray(item.name)) {
-                    item.name.forEach(name => {
-                         createButton(name, container, () => handleListClick(name));
-                    });
-                } 
-                // SINGLE IF STRING
-                else {
-                    createButton(item.name, container, () => handleListClick(item.name));
-                }
-            }
-        });
-      }
-
-      // === STEP 4 -> 5: GET TASKS (FIXED with Loop) ===
-      async function handleListClick(listName) {
-        currentList = listName;
-        document.getElementById('loading-text').innerText = "Getting your tasks...";
+        document.getElementById('loading-text').innerText = loadingMsg;
         showView('loading-view');
 
         try {
@@ -380,63 +270,69 @@
               action: currentAction, 
               space: currentSpace,
               folder: currentFolder,
-              list: listName,
-              type: "get task"
+              type: type
             })
           });
 
-          if (!response.ok) throw new Error("Network response was not ok");
+          if (!response.ok) throw new Error("Network error");
           const data = await response.json(); 
-          renderTasks(data);
-          showView('tasks-view');
+          renderItems(data, type);
+          showView('items-view');
 
         } catch (error) {
           console.error("Error:", error);
+          alert("Error fetching data. Check console.");
+          showView('folders-view');
         }
       }
 
-      function renderTasks(dataList) {
-        const container = document.getElementById('tasks-container');
+      // --- RENDER DYNAMIC ITEMS (Lists or Tasks) ---
+      function renderItems(dataList, type) {
+        const container = document.getElementById('items-container');
         container.innerHTML = ''; 
+        
+        // Title update
+        document.getElementById('items-title').innerText = (type === "get list") ? "Select a List" : "Select a Task";
 
         if (!dataList) {
-           container.innerHTML = '<div style="text-align:center; color:#888;">No tasks found.</div>';
+           container.innerHTML = '<div style="text-align:center; color:#888;">No items found.</div>';
            return;
         }
         if (!Array.isArray(dataList)) dataList = [dataList];
 
         dataList.forEach(item => {
-            if (item.name) {
-                // LOOP IF ARRAY
-                if (Array.isArray(item.name)) {
-                    item.name.forEach(name => {
-                         createButton(name, container, () => showForm(name));
-                    });
-                } 
-                // SINGLE IF STRING
-                else {
-                    createButton(item.name, container, () => showForm(item.name));
-                }
+            // Handle array wrapper if present
+            let name = item.name;
+            if(Array.isArray(name)) name = name[0];
+
+            if (name && typeof name === 'string' && !name.includes("No Folders")) {
+                createButton(name, container, () => handleItemClick(name));
             }
         });
       }
 
+      // === STEP 4 -> 5: HANDLE ITEM CLICK ===
+      function handleItemClick(itemName) {
+        currentItem = itemName;
+
+        if (currentAction === 'create a new task') {
+            // CREATE FLOW: Open Form
+            showView('form-view');
+        } else {
+            // UPDATE/DELETE FLOW: Send Webhook Immediately
+            submitFinalWebhook();
+        }
+      }
+
       // === HELPER: Create Button ===
-      function createButton(text, container, onClick, isTransparent = false) {
+      function createButton(text, container, onClick) {
           const btn = document.createElement('button');
           btn.innerText = text;
-          if (isTransparent) btn.className = 'transparent-btn';
           btn.onclick = onClick;
           container.appendChild(btn);
       }
 
-      // === STEP 6: FORM ===
-      function showForm(taskName) {
-        currentTask = taskName;
-        showView('form-view');
-      }
-
-      // --- SUBMIT FORM ---
+      // --- FINAL SUBMIT (For Create Form) ---
       function submitForm() {
         const title = document.getElementById('task-title').value;
         const desc = document.getElementById('task-desc').value;
@@ -446,17 +342,49 @@
           alert("Title is required!");
           return;
         }
-
-        console.log("Submitting:", { 
+        
+        // Prepare Data
+        const payload = { 
             action: currentAction,
             space: currentSpace,
             folder: currentFolder,
-            list: currentList,
-            task: currentTask,
-            formData: { title, desc, assignee }
-        });
-        
-        alert("Form Submitted! (Check Console)");
+            list: currentItem, // In create flow, item is the List Name
+            title: title,
+            description: desc,
+            assignee: assignee
+        };
+
+        sendFinalData(payload);
+      }
+
+      // --- FINAL SUBMIT (For Update/Delete) ---
+      function submitFinalWebhook() {
+          const payload = {
+              action: currentAction,
+              space: currentSpace,
+              folder: currentFolder,
+              task: currentItem // In Update/Delete flow, item is the Task Name
+          };
+          
+          if (confirm(`Are you sure you want to ${currentAction}: "${currentItem}"?`)) {
+              sendFinalData(payload);
+          }
+      }
+
+      // --- SEND DATA FUNCTION ---
+      async function sendFinalData(payload) {
+        try {
+             await fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            alert("Success! Request sent.");
+            // Reset to start
+            goBack(1);
+        } catch (e) {
+            alert("Error sending request.");
+        }
       }
     </script>
   </body>
