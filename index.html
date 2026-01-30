@@ -27,7 +27,7 @@
       .action-btn { text-align: center; }
       .action-btn:hover { padding-left: 15px; }
 
-      /* --- LOADING SPINNER (CANDLE) --- */
+      /* --- LOADING SPINNER --- */
       .loader-container { text-align: center; margin-top: 50px; }
       .spinner {
         border: 4px solid #333; border-top: 4px solid #3165ff;
@@ -53,9 +53,9 @@
       <div class="logo-container">
         <img src="https://via.placeholder.com/150x50/333333/FFFFFF?text=YOUR+LOGO" class="logo-img" alt="Logo">
       </div>
-      <button class="action-btn" onclick="goToStep2('Create a New Task')">Create a New Task</button>
-      <button class="action-btn" onclick="goToStep2('Update Task')">Update a Task</button>
-      <button class="action-btn" onclick="goToStep2('Delete Task')">Delete a Task</button>
+      <button class="action-btn" onclick="goToStep2('create a new task')">Create a New Task</button>
+      <button class="action-btn" onclick="goToStep2('update task')">Update a Task</button>
+      <button class="action-btn" onclick="goToStep2('delete task')">Delete a Task</button>
     </div>
 
     <div id="step-2" class="hidden">
@@ -86,22 +86,21 @@
     <div id="loading-view" class="hidden">
       <div class="loader-container">
         <div class="spinner"></div>
-        <div class="loading-text">Getting the list of folders...</div>
+        <div class="loading-text">Getting the list of folders...<br><span style="font-size:10px; opacity:0.6;">(Make sure n8n is listening!)</span></div>
       </div>
     </div>
 
     <div id="dynamic-folders-view" class="hidden">
       <h3 id="folder-title">Select a Folder</h3>
-      
       <div id="folders-container"></div>
-
       <a class="back-link" onclick="goBack(2)">← Back to Spaces</a>
     </div>
 
     <script>
       // === CONFIGURATION ===
-      // Your n8n Webhook URL
-      const WEBHOOK_URL = 'https://leavenwealth.app.n8n.cloud/webhook/4fa80722-bad9-4b29-b5e2-8fd23cff22af'; 
+      // This is your TEST Webhook URL. 
+      // IMPORTANT: You must click "Execute Workflow" in n8n for this to work!
+      const WEBHOOK_URL = 'https://leavenwealth.app.n8n.cloud/webhook-test/4fa80722-bad9-4b29-b5e2-8fd23cff22af'; 
 
       let currentAction = ''; 
 
@@ -120,21 +119,25 @@
           document.getElementById('dynamic-folders-view').classList.add('hidden');
           document.getElementById('loading-view').classList.add('hidden');
           document.getElementById('step-2').classList.remove('hidden');
-          // Clear old buttons so they don't stack up
           document.getElementById('folders-container').innerHTML = '';
         }
       }
 
       // --- THE WEBHOOK LOGIC ---
       async function handleSpaceClick(spaceName) {
-        // 1. Switch UI to Loading State
+        // 1. Switch UI to Loading
         document.getElementById('step-2').classList.add('hidden');
         document.getElementById('loading-view').classList.remove('hidden');
 
+        // Setup 60s timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 60000); 
+
         try {
-          // 2. Call n8n
+          // 2. Call n8n with the Data
           const response = await fetch(WEBHOOK_URL, {
             method: 'POST',
+            signal: controller.signal,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
               action: currentAction, 
@@ -142,39 +145,50 @@
             })
           });
 
-          // 3. Receive the list of folders from n8n
+          clearTimeout(timeoutId);
+
+          if (!response.ok) {
+            throw new Error(`Server Error: ${response.status}`);
+          }
+
+          // 3. Receive Data
           const folders = await response.json(); 
           
-          // 4. Build the buttons dynamically
+          // 4. Build Buttons
           renderDynamicButtons(folders);
 
-          // 5. Show the Folder View
+          // 5. Show Folders
           document.getElementById('loading-view').classList.add('hidden');
           document.getElementById('dynamic-folders-view').classList.remove('hidden');
 
         } catch (error) {
-          console.error("Error fetching folders:", error);
-          alert("Error: Could not load folders from n8n.");
-          goBack(2); 
+          console.error("Fetch Error:", error);
+          document.getElementById('loading-view').classList.add('hidden');
+          document.getElementById('step-2').classList.remove('hidden');
+
+          if (error.name === 'AbortError') {
+            alert("Timeout: n8n took too long to reply.");
+          } else {
+            // This is the most common error message for Test URLs
+            alert("Connection Failed!\n\n1. Is your n8n workflow open and listening?\n2. Did you enable CORS (Allowed Origins: *) in the Webhook node?");
+          }
         }
       }
 
       // --- BUTTON GENERATOR ---
       function renderDynamicButtons(folderList) {
         const container = document.getElementById('folders-container');
-        container.innerHTML = ''; // Clear container
+        container.innerHTML = ''; 
 
-        // Check if n8n returned an actual list
         if (!Array.isArray(folderList) || folderList.length === 0) {
-           container.innerHTML = '<div style="text-align:center; color:#888;">No folders found.</div>';
+           container.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">No folders found.</div>';
            return;
         }
 
         folderList.forEach(folder => {
           const btn = document.createElement('button');
-          btn.innerText = folder.name; // Label of the button
+          btn.innerText = folder.name; 
           
-          // When clicked, open the link provided by n8n
           btn.onclick = function() {
             if (window.Front && window.Front.openUrl) {
               window.Front.openUrl({ url: folder.url });
@@ -182,7 +196,6 @@
               window.open(folder.url, '_blank');
             }
           };
-
           container.appendChild(btn);
         });
       }
