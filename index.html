@@ -178,11 +178,11 @@
         "Training": ["LWU", "Clickup", "Onboarding"],
         "Investor Relations": ["Investor relations"],
         "Capital Raising": ["CRM"],
-        "Operations": [], // No Folder
-        "CCM": [], // No Folder
-        "Pricing Column": [], // No Folder
+        "Operations": [], 
+        "CCM": [], 
+        "Pricing Column": [], 
         "SOP and Templates": ["Marketing", "Asset Management", "Finance", "Insurance", "Legal", "Capital Raising", "Operations", "Investor Relations", "Applications", "HR", "Executive"],
-        "Pref Equity Brokers": [], // No Folder
+        "Pref Equity Brokers": [], 
         "Enterprise Risk Mgmt": ["Properties", "Debt", "Comments", "Insurance", "Risk", "Registrar"],
         "Chris Properties": [
             "000-data template", "001-loan data", "7300-Greensland LLC", "BG Champion Partners LLC", "Boulder Bancroft Partners LLC", 
@@ -197,14 +197,14 @@
         ],
         "PGO": ["LLS L10", "Spreads"],
         "LLS Operations": ["LLS L10"],
-        "Chris Mitch": [] // No Folder
+        "Chris Mitch": [] 
       };
 
       // === STATE ===
       let currentAction = ''; 
       let currentSpace = '';
       let currentFolder = '';
-      let currentItem = ''; // List or Task ID
+      let currentItem = ''; 
 
       // --- NAVIGATION CONTROLLER ---
       function goToStep2(action) {
@@ -226,7 +226,7 @@
         document.getElementById(viewId).classList.remove('hidden');
       }
 
-      // === STEP 2 -> 3: SELECT SPACE & SHOW HARDCODED FOLDERS ===
+      // === STEP 2 -> 3: SELECT SPACE ===
       function handleSpaceClick(spaceName) {
         currentSpace = spaceName;
         const folders = spaceData[spaceName];
@@ -234,15 +234,11 @@
         const container = document.getElementById('folders-container');
         container.innerHTML = ''; 
 
-        // CASE A: Space has folders (e.g., Marketing)
         if (folders && folders.length > 0) {
             folders.forEach(name => {
                 createButton(name, container, () => handleFolderClick(name));
             });
-        } 
-        // CASE B: Space has NO folders (e.g., Operations)
-        // We auto-select a dummy folder or pass empty string to the webhook
-        else {
+        } else {
              createButton("Go to " + spaceName + " Lists", container, () => handleFolderClick(""));
         }
 
@@ -253,9 +249,6 @@
       async function handleFolderClick(folderName) {
         currentFolder = folderName;
         
-        // DETERMINE WEBHOOK MODE
-        // If Create -> Get List
-        // If Update/Delete -> Get Task
         const type = (currentAction === 'create a new task') ? "get list" : "get task";
         const loadingMsg = (type === "get list") ? "Getting lists..." : "Getting tasks...";
 
@@ -286,29 +279,45 @@
         }
       }
 
-      // --- RENDER DYNAMIC ITEMS (Lists or Tasks) ---
+      // === RENDER ITEMS (FIXED: Handles Arrays correctly) ===
       function renderItems(dataList, type) {
         const container = document.getElementById('items-container');
         container.innerHTML = ''; 
         
-        // Title update
         document.getElementById('items-title').innerText = (type === "get list") ? "Select a List" : "Select a Task";
 
         if (!dataList) {
            container.innerHTML = '<div style="text-align:center; color:#888;">No items found.</div>';
            return;
         }
+
+        // If it's a single object, wrap it
         if (!Array.isArray(dataList)) dataList = [dataList];
 
         dataList.forEach(item => {
-            // Handle array wrapper if present
-            let name = item.name;
-            if(Array.isArray(name)) name = name[0];
-
-            if (name && typeof name === 'string' && !name.includes("No Folders")) {
-                createButton(name, container, () => handleItemClick(name));
+            // Check if "name" exists
+            if (item.name) {
+                // CASE 1: The name itself is an ARRAY (e.g., ["List A", "List B"])
+                if (Array.isArray(item.name)) {
+                    item.name.forEach(singleName => {
+                        if (singleName && !singleName.includes("No Folders") && !singleName.includes("No List")) {
+                            createButton(singleName, container, () => handleItemClick(singleName));
+                        }
+                    });
+                }
+                // CASE 2: The name is a STRING (e.g., "List A")
+                else if (typeof item.name === 'string') {
+                    if (!item.name.includes("No Folders") && !item.name.includes("No List")) {
+                        createButton(item.name, container, () => handleItemClick(item.name));
+                    }
+                }
             }
         });
+
+        // Fallback if empty
+        if (container.innerHTML === '') {
+             container.innerHTML = '<div style="text-align:center; color:#888;">No items found.</div>';
+        }
       }
 
       // === STEP 4 -> 5: HANDLE ITEM CLICK ===
@@ -316,10 +325,8 @@
         currentItem = itemName;
 
         if (currentAction === 'create a new task') {
-            // CREATE FLOW: Open Form
             showView('form-view');
         } else {
-            // UPDATE/DELETE FLOW: Send Webhook Immediately
             submitFinalWebhook();
         }
       }
@@ -332,7 +339,7 @@
           container.appendChild(btn);
       }
 
-      // --- FINAL SUBMIT (For Create Form) ---
+      // --- FINAL SUBMIT (Create) ---
       function submitForm() {
         const title = document.getElementById('task-title').value;
         const desc = document.getElementById('task-desc').value;
@@ -343,12 +350,11 @@
           return;
         }
         
-        // Prepare Data
         const payload = { 
             action: currentAction,
             space: currentSpace,
             folder: currentFolder,
-            list: currentItem, // In create flow, item is the List Name
+            list: currentItem, 
             title: title,
             description: desc,
             assignee: assignee
@@ -357,13 +363,13 @@
         sendFinalData(payload);
       }
 
-      // --- FINAL SUBMIT (For Update/Delete) ---
+      // --- FINAL SUBMIT (Update/Delete) ---
       function submitFinalWebhook() {
           const payload = {
               action: currentAction,
               space: currentSpace,
               folder: currentFolder,
-              task: currentItem // In Update/Delete flow, item is the Task Name
+              task: currentItem 
           };
           
           if (confirm(`Are you sure you want to ${currentAction}: "${currentItem}"?`)) {
@@ -371,7 +377,7 @@
           }
       }
 
-      // --- SEND DATA FUNCTION ---
+      // --- SEND DATA ---
       async function sendFinalData(payload) {
         try {
              await fetch(WEBHOOK_URL, {
@@ -380,7 +386,6 @@
                 body: JSON.stringify(payload)
             });
             alert("Success! Request sent.");
-            // Reset to start
             goBack(1);
         } catch (e) {
             alert("Error sending request.");
