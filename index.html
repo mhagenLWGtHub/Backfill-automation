@@ -230,7 +230,7 @@
       // === STEP 2 -> 3: GET FOLDERS ===
       async function handleSpaceClick(spaceName) {
         currentSpace = spaceName;
-        currentFolder = ''; // Reset
+        currentFolder = ''; 
         
         document.getElementById('loading-text').innerText = "Getting the list of folders...";
         showView('loading-view');
@@ -253,70 +253,70 @@
 
         } catch (error) {
           console.error("Error:", error);
-          // Allow spinner to persist or handle error as preferred
         }
       }
 
-      // --- RENDER FOLDERS (FIXED) ---
+      // --- RENDER FOLDERS (FIXED FOR LIST PAYLOAD) ---
       function renderFolders(dataList) {
         const container = document.getElementById('folders-container');
         container.innerHTML = ''; 
-        
-        // Debugging log to see exactly what arrived
-        console.log("Received Data:", dataList);
 
-        // Handle case where dataList is null or undefined
         if (!dataList) {
            container.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">No data received.</div>';
            return;
         }
 
-        // If n8n returns a single object instead of an array, wrap it
-        if (!Array.isArray(dataList)) {
-            dataList = [dataList];
-        }
+        // Wrap single object in array if needed
+        if (!Array.isArray(dataList)) dataList = [dataList];
 
         let hasItems = false;
 
         // 1. Folders -> Fetch Lists
         dataList.forEach(item => {
-          let itemName = item.name;
-
-          // FIX: If "name" is an array ["No Folders..."], extract the string
-          if (Array.isArray(itemName) && itemName.length > 0) {
-             itemName = itemName[0];
-          }
-
-          // Check if valid string
-          if (itemName && 
-              typeof itemName === 'string' &&
-              itemName !== "No Folders in this list" && 
-              itemName !== "no folder in this space") {
-            
-            const btn = document.createElement('button');
-            btn.innerText = itemName;
-            btn.onclick = () => handleFolderClick(itemName); 
-            container.appendChild(btn);
-            hasItems = true;
-          }
+            // Check if 'name' property exists
+            if (item.name) {
+                // If it is an ARRAY ["Folder A", "Folder B"], loop through it
+                if (Array.isArray(item.name)) {
+                    item.name.forEach(folderName => {
+                        // Skip the specific "No Folders" message
+                        if (folderName !== "No Folders in this list" && folderName !== "no folder in this space") {
+                            const btn = document.createElement('button');
+                            btn.innerText = folderName;
+                            btn.onclick = () => handleFolderClick(folderName);
+                            container.appendChild(btn);
+                            hasItems = true;
+                        }
+                    });
+                } 
+                // If it is a STRING "Folder A", just display it
+                else if (typeof item.name === 'string') {
+                    if (item.name !== "No Folders in this list" && item.name !== "no folder in this space") {
+                        const btn = document.createElement('button');
+                        btn.innerText = item.name;
+                        btn.onclick = () => handleFolderClick(item.name);
+                        container.appendChild(btn);
+                        hasItems = true;
+                    }
+                }
+            }
         });
 
         // 2. Folderless -> Fetch Tasks
         dataList.forEach(item => {
           if (item.folderless && Array.isArray(item.folderless) && item.folderless.length > 0) {
             
-            // Render Header
+            // Header
             const label = document.createElement('div');
             label.className = 'section-label';
             label.innerText = 'Folderless List';
             container.appendChild(label);
 
-            // Render Buttons
+            // Buttons
             item.folderless.forEach(listName => {
               const btn = document.createElement('button');
               btn.innerText = listName;
               btn.className = 'transparent-btn';
-              btn.onclick = () => handleListClick(listName); // Folderless items ARE lists
+              btn.onclick = () => handleListClick(listName); 
               container.appendChild(btn);
             });
             hasItems = true;
