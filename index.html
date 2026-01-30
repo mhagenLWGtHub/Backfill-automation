@@ -201,7 +201,6 @@
       function goToStep2(action) {
         currentAction = action;
         
-        // Update form title dynamically based on action
         if (action === 'create a new task') {
             document.getElementById('form-title').innerText = "Create a New Task";
         } else if (action === 'update task') {
@@ -218,7 +217,7 @@
         else if (step === 2) showView('step-2');
         else if (step === 3) showView('folders-view');
         else if (step === 4) showView('lists-view');
-        else if (step === 'loading') showView('step-2'); // Simple fallback
+        else if (step === 'loading') showView('step-2'); 
         else if (step === 'form') showView('tasks-view');
       }
 
@@ -254,29 +253,46 @@
 
         } catch (error) {
           console.error("Error:", error);
+          // If error (like timeout or network), user can click cancel.
         }
       }
 
+      // --- UPDATED RENDER FOLDERS ---
       function renderFolders(dataList) {
         const container = document.getElementById('folders-container');
         container.innerHTML = ''; 
 
         if (!Array.isArray(dataList)) {
-           container.innerHTML = '<div style="text-align:center; color:#888;">No data received.</div>';
+           container.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">No data received.</div>';
            return;
         }
 
+        let hasItems = false;
+
         // 1. Folders -> Fetch Lists
         dataList.forEach(item => {
-          if (item.name && item.name !== "no folder in this space") {
+          // CHECK FOR: Array name OR String name
+          let itemName = item.name;
+          
+          // Fix: Handle if name is an Array like ["No Folders in this list"]
+          if (Array.isArray(itemName) && itemName.length > 0) {
+             itemName = itemName[0];
+          }
+
+          // IGNORE if it says "No Folders..."
+          if (itemName && 
+              itemName !== "No Folders in this list" && 
+              itemName !== "no folder in this space") {
+            
             const btn = document.createElement('button');
-            btn.innerText = item.name;
-            btn.onclick = () => handleFolderClick(item.name); 
+            btn.innerText = itemName;
+            btn.onclick = () => handleFolderClick(itemName); 
             container.appendChild(btn);
+            hasItems = true;
           }
         });
 
-        // 2. Folderless -> Fetch Tasks (Skip Step 3)
+        // 2. Folderless -> Fetch Tasks
         dataList.forEach(item => {
           if (item.folderless && Array.isArray(item.folderless) && item.folderless.length > 0) {
             const label = document.createElement('div');
@@ -288,13 +304,18 @@
               const btn = document.createElement('button');
               btn.innerText = listName;
               btn.className = 'transparent-btn';
-              // Note: We skip handleFolderClick and go straight to handleListClick
-              // because these "folderless items" ARE the lists.
-              btn.onclick = () => handleListClick(listName); 
+              btn.onclick = () => handleListClick(listName); // Folderless items ARE lists
               container.appendChild(btn);
             });
+            hasItems = true;
           }
         });
+
+        // 3. EMPTY STATE CHECK
+        // If we looped through everything and found no valid folders or lists:
+        if (!hasItems) {
+            container.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">No lists in this space</div>';
+        }
       }
 
       // === STEP 3 -> 4: GET LISTS ===
@@ -382,7 +403,7 @@
 
         dataList.forEach(item => {
           const btn = document.createElement('button');
-          btn.innerText = item.name; // Assuming task has a 'name' property
+          btn.innerText = item.name; 
           btn.onclick = () => showForm(item.name);
           container.appendChild(btn);
         });
@@ -391,9 +412,6 @@
       // === STEP 6: FORM ===
       function showForm(taskName) {
         currentTask = taskName;
-        // Optionally pre-fill the form Title with the task name
-        // document.getElementById('task-title').value = taskName; 
-        
         showView('form-view');
       }
 
