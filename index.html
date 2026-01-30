@@ -256,7 +256,7 @@
         }
       }
 
-      // --- RENDER FOLDERS (FIXED FOR LIST PAYLOAD) ---
+      // --- RENDER FOLDERS (With Loop Fix) ---
       function renderFolders(dataList) {
         const container = document.getElementById('folders-container');
         container.innerHTML = ''; 
@@ -266,35 +266,26 @@
            return;
         }
 
-        // Wrap single object in array if needed
         if (!Array.isArray(dataList)) dataList = [dataList];
 
         let hasItems = false;
 
         // 1. Folders -> Fetch Lists
         dataList.forEach(item => {
-            // Check if 'name' property exists
             if (item.name) {
-                // If it is an ARRAY ["Folder A", "Folder B"], loop through it
+                // HANDLE ARRAY
                 if (Array.isArray(item.name)) {
-                    item.name.forEach(folderName => {
-                        // Skip the specific "No Folders" message
-                        if (folderName !== "No Folders in this list" && folderName !== "no folder in this space") {
-                            const btn = document.createElement('button');
-                            btn.innerText = folderName;
-                            btn.onclick = () => handleFolderClick(folderName);
-                            container.appendChild(btn);
+                    item.name.forEach(name => {
+                        if (name !== "No Folders in this list" && name !== "no folder in this space") {
+                            createButton(name, container, () => handleFolderClick(name));
                             hasItems = true;
                         }
                     });
                 } 
-                // If it is a STRING "Folder A", just display it
+                // HANDLE STRING
                 else if (typeof item.name === 'string') {
                     if (item.name !== "No Folders in this list" && item.name !== "no folder in this space") {
-                        const btn = document.createElement('button');
-                        btn.innerText = item.name;
-                        btn.onclick = () => handleFolderClick(item.name);
-                        container.appendChild(btn);
+                        createButton(item.name, container, () => handleFolderClick(item.name));
                         hasItems = true;
                     }
                 }
@@ -304,32 +295,24 @@
         // 2. Folderless -> Fetch Tasks
         dataList.forEach(item => {
           if (item.folderless && Array.isArray(item.folderless) && item.folderless.length > 0) {
-            
-            // Header
             const label = document.createElement('div');
             label.className = 'section-label';
             label.innerText = 'Folderless List';
             container.appendChild(label);
 
-            // Buttons
             item.folderless.forEach(listName => {
-              const btn = document.createElement('button');
-              btn.innerText = listName;
-              btn.className = 'transparent-btn';
-              btn.onclick = () => handleListClick(listName); 
-              container.appendChild(btn);
+              createButton(listName, container, () => handleListClick(listName), true);
             });
             hasItems = true;
           }
         });
 
-        // 3. Empty State Check
         if (!hasItems) {
             container.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">No lists in this space</div>';
         }
       }
 
-      // === STEP 3 -> 4: GET LISTS ===
+      // === STEP 3 -> 4: GET LISTS (FIXED with Loop) ===
       async function handleFolderClick(folderName) {
         currentFolder = folderName;
         document.getElementById('loading-text').innerText = "Getting your lists...";
@@ -368,14 +351,22 @@
         if (!Array.isArray(dataList)) dataList = [dataList];
 
         dataList.forEach(item => {
-          const btn = document.createElement('button');
-          btn.innerText = item.name; 
-          btn.onclick = () => handleListClick(item.name);
-          container.appendChild(btn);
+            if (item.name) {
+                // LOOP IF ARRAY
+                if (Array.isArray(item.name)) {
+                    item.name.forEach(name => {
+                         createButton(name, container, () => handleListClick(name));
+                    });
+                } 
+                // SINGLE IF STRING
+                else {
+                    createButton(item.name, container, () => handleListClick(item.name));
+                }
+            }
         });
       }
 
-      // === STEP 4 -> 5: GET TASKS ===
+      // === STEP 4 -> 5: GET TASKS (FIXED with Loop) ===
       async function handleListClick(listName) {
         currentList = listName;
         document.getElementById('loading-text').innerText = "Getting your tasks...";
@@ -415,11 +406,28 @@
         if (!Array.isArray(dataList)) dataList = [dataList];
 
         dataList.forEach(item => {
-          const btn = document.createElement('button');
-          btn.innerText = item.name; 
-          btn.onclick = () => showForm(item.name);
-          container.appendChild(btn);
+            if (item.name) {
+                // LOOP IF ARRAY
+                if (Array.isArray(item.name)) {
+                    item.name.forEach(name => {
+                         createButton(name, container, () => showForm(name));
+                    });
+                } 
+                // SINGLE IF STRING
+                else {
+                    createButton(item.name, container, () => showForm(item.name));
+                }
+            }
         });
+      }
+
+      // === HELPER: Create Button ===
+      function createButton(text, container, onClick, isTransparent = false) {
+          const btn = document.createElement('button');
+          btn.innerText = text;
+          if (isTransparent) btn.className = 'transparent-btn';
+          btn.onclick = onClick;
+          container.appendChild(btn);
       }
 
       // === STEP 6: FORM ===
