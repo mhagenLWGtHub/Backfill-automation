@@ -33,9 +33,9 @@
         border: 4px solid #333; border-top: 4px solid #3165ff;
         border-radius: 50%; width: 40px; height: 40px;
         animation: spin 1s linear infinite; margin: 0 auto 15px auto;
+        display: block; 
       }
       .loading-text { color: #888; font-size: 13px; letter-spacing: 0.5px; margin-top: 10px;}
-      .error-text { color: #ff6b6b; font-size: 13px; margin-top: 10px; }
 
       @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
@@ -87,21 +87,23 @@
 
     <div id="loading-view" class="hidden">
       <div class="loader-container">
-        <div id="spinner-icon" class="spinner"></div>
-        <div id="status-text" class="loading-text">Getting the list of folders...</div>
+        <div class="spinner"></div>
+        <div class="loading-text">Getting the list of folders...</div>
       </div>
       <a class="back-link" onclick="goBack(2)">Cancel</a>
     </div>
 
     <div id="dynamic-folders-view" class="hidden">
       <h3 id="folder-title">Select a Folder</h3>
+      
       <div id="folders-container"></div>
+      
       <a class="back-link" onclick="goBack(2)">← Back to Spaces</a>
     </div>
 
     <script>
       // === CONFIGURATION ===
-      // TEST URL (Requires "Execute Workflow" to be active in n8n tab)
+      // Your TEST Webhook URL (Make sure n8n is "Executing")
       const WEBHOOK_URL = 'https://leavenwealth.app.n8n.cloud/webhook-test/4fa80722-bad9-4b29-b5e2-8fd23cff22af'; 
 
       let currentAction = ''; 
@@ -118,31 +120,18 @@
           document.getElementById('step-2').classList.add('hidden');
           document.getElementById('step-1').classList.remove('hidden');
         } else if (toStep === 2) {
-          // Reset Loading State
           document.getElementById('dynamic-folders-view').classList.add('hidden');
           document.getElementById('loading-view').classList.add('hidden');
           document.getElementById('step-2').classList.remove('hidden');
-          
-          // Reset Text
-          document.getElementById('status-text').innerText = "Getting the list of folders...";
-          document.getElementById('status-text').className = "loading-text";
-          document.getElementById('spinner-icon').style.display = "block";
-          
           document.getElementById('folders-container').innerHTML = '';
         }
       }
 
-      // --- THE WEBHOOK LOGIC ---
+      // --- THE LOGIC ---
       async function handleSpaceClick(spaceName) {
-        // 1. Switch UI to Loading
+        // 1. Show Loading immediately
         document.getElementById('step-2').classList.add('hidden');
         document.getElementById('loading-view').classList.remove('hidden');
-        
-        // Reset status text in case it was error before
-        const statusText = document.getElementById('status-text');
-        statusText.innerText = "Getting the list of folders...";
-        statusText.className = "loading-text";
-        document.getElementById('spinner-icon').style.display = "block";
 
         try {
           // 2. Call n8n
@@ -155,49 +144,43 @@
             })
           });
 
-          if (!response.ok) {
-            throw new Error(`Server Error: ${response.status}`);
-          }
+          if (!response.ok) throw new Error("Network response was not ok");
 
-          // 3. Receive Data
+          // 3. Get the JSON list of folders
           const folders = await response.json(); 
           
-          // 4. Build Buttons
+          // 4. GENERATE BUTTONS FROM DATA
           renderDynamicButtons(folders);
 
-          // 5. Show Folders
+          // 5. Hide Loader, Show Buttons
           document.getElementById('loading-view').classList.add('hidden');
           document.getElementById('dynamic-folders-view').classList.remove('hidden');
 
         } catch (error) {
-          console.error("Fetch Error:", error);
-          
-          // INSTEAD OF A POPUP, WE UPDATE THE TEXT ON SCREEN
-          document.getElementById('spinner-icon').style.display = "none"; // Hide spinner
-          statusText.className = "error-text"; // Make text red
-          
-          if (error.message.includes("Failed to fetch")) {
-             statusText.innerText = "Connection Blocked. Enable CORS in n8n.";
-          } else {
-             statusText.innerText = "Waiting for n8n... (Did you click Execute?)";
-          }
+          console.error("Silent Fail:", error);
+          // If it fails, we do NOTHING. The spinner keeps spinning.
         }
       }
 
-      // --- BUTTON GENERATOR ---
+      // --- DYNAMIC BUTTON GENERATOR ---
       function renderDynamicButtons(folderList) {
         const container = document.getElementById('folders-container');
-        container.innerHTML = ''; 
+        container.innerHTML = ''; // Clean slate
 
+        // Handle empty list or error
         if (!Array.isArray(folderList) || folderList.length === 0) {
            container.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">No folders found.</div>';
            return;
         }
 
+        // Loop through the data and make buttons
         folderList.forEach(folder => {
           const btn = document.createElement('button');
+          
+          // Use the "name" from your JSON
           btn.innerText = folder.name; 
           
+          // Use the "url" from your JSON
           btn.onclick = function() {
             if (window.Front && window.Front.openUrl) {
               window.Front.openUrl({ url: folder.url });
@@ -205,6 +188,7 @@
               window.open(folder.url, '_blank');
             }
           };
+
           container.appendChild(btn);
         });
       }
