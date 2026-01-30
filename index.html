@@ -34,7 +34,9 @@
         border-radius: 50%; width: 40px; height: 40px;
         animation: spin 1s linear infinite; margin: 0 auto 15px auto;
       }
-      .loading-text { color: #888; font-size: 13px; letter-spacing: 0.5px; }
+      .loading-text { color: #888; font-size: 13px; letter-spacing: 0.5px; margin-top: 10px;}
+      .error-text { color: #ff6b6b; font-size: 13px; margin-top: 10px; }
+
       @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
       /* --- UTILITIES --- */
@@ -85,9 +87,10 @@
 
     <div id="loading-view" class="hidden">
       <div class="loader-container">
-        <div class="spinner"></div>
-        <div class="loading-text">Getting the list of folders...<br><span style="font-size:10px; opacity:0.6;">(Make sure n8n is listening!)</span></div>
+        <div id="spinner-icon" class="spinner"></div>
+        <div id="status-text" class="loading-text">Getting the list of folders...</div>
       </div>
+      <a class="back-link" onclick="goBack(2)">Cancel</a>
     </div>
 
     <div id="dynamic-folders-view" class="hidden">
@@ -98,8 +101,7 @@
 
     <script>
       // === CONFIGURATION ===
-      // This is your TEST Webhook URL. 
-      // IMPORTANT: You must click "Execute Workflow" in n8n for this to work!
+      // TEST URL (Requires "Execute Workflow" to be active in n8n tab)
       const WEBHOOK_URL = 'https://leavenwealth.app.n8n.cloud/webhook-test/4fa80722-bad9-4b29-b5e2-8fd23cff22af'; 
 
       let currentAction = ''; 
@@ -116,9 +118,16 @@
           document.getElementById('step-2').classList.add('hidden');
           document.getElementById('step-1').classList.remove('hidden');
         } else if (toStep === 2) {
+          // Reset Loading State
           document.getElementById('dynamic-folders-view').classList.add('hidden');
           document.getElementById('loading-view').classList.add('hidden');
           document.getElementById('step-2').classList.remove('hidden');
+          
+          // Reset Text
+          document.getElementById('status-text').innerText = "Getting the list of folders...";
+          document.getElementById('status-text').className = "loading-text";
+          document.getElementById('spinner-icon').style.display = "block";
+          
           document.getElementById('folders-container').innerHTML = '';
         }
       }
@@ -128,24 +137,23 @@
         // 1. Switch UI to Loading
         document.getElementById('step-2').classList.add('hidden');
         document.getElementById('loading-view').classList.remove('hidden');
-
-        // Setup 60s timeout
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 60000); 
+        
+        // Reset status text in case it was error before
+        const statusText = document.getElementById('status-text');
+        statusText.innerText = "Getting the list of folders...";
+        statusText.className = "loading-text";
+        document.getElementById('spinner-icon').style.display = "block";
 
         try {
-          // 2. Call n8n with the Data
+          // 2. Call n8n
           const response = await fetch(WEBHOOK_URL, {
             method: 'POST',
-            signal: controller.signal,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
               action: currentAction, 
               space: spaceName 
             })
           });
-
-          clearTimeout(timeoutId);
 
           if (!response.ok) {
             throw new Error(`Server Error: ${response.status}`);
@@ -163,14 +171,15 @@
 
         } catch (error) {
           console.error("Fetch Error:", error);
-          document.getElementById('loading-view').classList.add('hidden');
-          document.getElementById('step-2').classList.remove('hidden');
-
-          if (error.name === 'AbortError') {
-            alert("Timeout: n8n took too long to reply.");
+          
+          // INSTEAD OF A POPUP, WE UPDATE THE TEXT ON SCREEN
+          document.getElementById('spinner-icon').style.display = "none"; // Hide spinner
+          statusText.className = "error-text"; // Make text red
+          
+          if (error.message.includes("Failed to fetch")) {
+             statusText.innerText = "Connection Blocked. Enable CORS in n8n.";
           } else {
-            // This is the most common error message for Test URLs
-            alert("Connection Failed!\n\n1. Is your n8n workflow open and listening?\n2. Did you enable CORS (Allowed Origins: *) in the Webhook node?");
+             statusText.innerText = "Waiting for n8n... (Did you click Execute?)";
           }
         }
       }
