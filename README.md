@@ -21,11 +21,16 @@ read-only.
 ```
 docs/schema-map.md          the 1.1 deliverable: live schema audit and record-type mapping
 docs/CLAUDE_CODE_SPEC.md    the build spec this work follows
-seed/properties.csv         seed reference data, surrogate P0001-style ids, unchanged
+seed/properties.csv         seed reference data, surrogate P0001-style ids (2nd delivery, 119 rows)
 seed/aliases.csv
 seed/property_addresses.csv
 seed/conflicts.csv          23 open name conflicts, DECISION columns blank, awaiting a human
+docs/seed-id-remap.csv      old-to-new surrogate id correspondence, derived, NOT applied
 ```
 
 The seed CSVs are committed exactly as supplied. The 1.2 loader maps their surrogate ids onto
 real `property.id` uuids and reports every non-exact match instead of guessing.
+
+> **Seed data warning.** `seed/property_addresses.csv` is still on the first-delivery
+> numbering and 89 of its 305 rows are wrong against the corrected `properties.csv`. See
+> section 5a of the schema map. It has not been altered.

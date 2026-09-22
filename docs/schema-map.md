@@ -240,6 +240,42 @@ these tables, which is a further reason nothing structural gets altered.
 
 ---
 
+## 5a. Seed data state (updated 2026-09-22, second delivery)
+
+`properties.csv` and `aliases.csv` were resent to correct a mistake in the first delivery.
+The corrected files drop seven rows that were not properties at all, six of them spreadsheet
+artefacts sitting in the `spe_legal_name` column (`Deleted Properties`, `2023 they no longer
+own this property`, `2024 they no longer own this property`, and four rows of `24. Confirmed
+properties were sold`). 126 property rows became 119, 429 alias rows became 422.
+
+The two corrected files agree with each other exactly: every `property_id` in `aliases.csv`
+exists in `properties.csv` and every property has at least one alias.
+
+**`property_addresses.csv` was not resent and is now misaligned.** Dropping those seven rows
+renumbered everything from `P0062` onward, and the address file still carries the old
+numbering:
+
+- 83 of its 305 address rows now point at the wrong property.
+- 6 more rows are stranded on ids that no longer exist at all (`P0087`, `P0088`, `P0090`
+  through `P0093`, which are real addresses: 4319-4325 S 22nd Street, 135 E Sheridan Street,
+  4915/4917 Davenport Street, 3419 Dewey Avenue, 3146 Chicago Street).
+- 7 ids in the address file (`P0120` through `P0126`) have no property row in the new file.
+- 216 rows, everything up to `P0061`, are unaffected.
+
+The worst single case: `P0117` is `15th Street 9 Plex` in Sioux Falls SD under the new
+numbering, and the address file gives it `4541 Tranquility Drive - Garage 3` in Lincoln NE.
+Loading it as it stands would attach a Lincoln garage to a Sioux Falls nine-plex, and the
+address corroboration step in Pass 1 would then reject every genuine match for both.
+
+`docs/seed-id-remap.csv` holds the full old-to-new correspondence. It is derived, not guessed:
+the new file is the old file minus seven rows with order preserved, and every one of the 119
+surviving rows was matched on `common_name`, `spe_legal_name` and `notes` together. It has
+**not** been applied to `property_addresses.csv`, which is committed exactly as supplied. The
+six stranded rows have no mechanical answer and need a human either way.
+
+
+---
+
 ## 6. Questions I am raising rather than deciding
 
 The spec's four, updated with what the audit found, plus three new ones.
@@ -262,6 +298,9 @@ The spec's four, updated with what the audit found, plus three new ones.
 6. **New: how should a bank statement find its account?** 258 accounts, 11 duplicate names, no
    unique key. Same problem.
 7. **New: file ledger shape.** Option (a) or (b) in section 4. I lean to (b).
+8. **New: `property_addresses.csv`.** Regenerate it on the new numbering, or apply
+   `docs/seed-id-remap.csv` to the copy in `seed/`? And what should happen to the six address
+   rows whose property rows were dropped as artefacts? See section 5a.
 
 ---
 

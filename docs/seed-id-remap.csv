@@ -1,0 +1,127 @@
+old_property_id,new_property_id,common_name,spe_legal_name,address_rows_affected,status
+P0001,P0001,Estrella at Kiest,4542 West Kiest Blvd LLC,1,unchanged
+P0002,P0002,BG Flats,BG Champion Partners LLC,1,unchanged
+P0003,P0003,Champion Villas,BG Champion Partners LLC,1,unchanged
+P0004,P0004,Eagle Creek,Eagle Annex Partners LLC,2,unchanged
+P0005,P0005,Langston Annex,Eagle Annex Partners LLC,0,unchanged
+P0006,P0006,Keystone (The Beverly),Keystone Neighborhood LLC,1,unchanged
+P0007,P0007,500 S Dakota,500 S Dakota Ave LLC,1,unchanged
+P0008,P0008,1003 Avenue K,1003 Avenue K LLC,1,unchanged
+P0009,P0009,1851 Todd Road,1851 Todd Road LLC,6,unchanged
+P0010,P0010,Villa Blanca,2706 N 75 St LLC,3,unchanged
+P0011,P0011,Venice,4916 California Street LLC,1,unchanged
+P0012,P0012,9447 J Street,9447 J Street LLC,1,unchanged
+P0013,P0013,Cedar Haven Duplexes,NDD Partners LLC,17,unchanged
+P0014,P0014,Lions Gate,Lions Gate Partners LLC,1,unchanged
+P0015,P0015,Cleveland Partners (Greenway 1),Cleveland Partners LLC,0,unchanged
+P0016,P0016,Townpark Townhomes (Greenway 2),Townpark Townhomes LLC,0,unchanged
+P0017,P0017,Sarpy Douglas / The Vincent,,1,unchanged
+P0018,P0018,Doral Apartments,Doral Partners LLC,7,unchanged
+P0019,P0019,Bancroft Place Apartments,Bancroft Place Apts LLC,16,unchanged
+P0020,P0020,Boulder Pointe Townhomes,Boulder Pointe Townhomes LLC,26,unchanged
+P0021,P0021,Brent Village,Brent Partners LLC,17,unchanged
+P0022,P0022,Capital City Villas,Capital Villas Partners LLC,2,unchanged
+P0023,P0023,College Heights,College Heights Partners LLC,1,unchanged
+P0024,P0024,Judee,Judee Partners LLC,4,unchanged
+P0025,P0025,Adventureland Village,Adventureland Village Partners LLC,1,unchanged
+P0026,P0026,Altoona Terrace,Altoona Terrace Partners LLC,1,unchanged
+P0027,P0027,Franklin Court,Franklin Court Partners LLC,1,unchanged
+P0028,P0028,NB Brothers,NB Brothers LLC,1,unchanged
+P0029,P0029,Jefferson Commons,Original 3 LLC,0,unchanged
+P0030,P0030,CB 5 Plex,CB 5 Plex LLC,1,unchanged
+P0031,P0031,Copperleaf,Copperleaf Investments LLC,5,unchanged
+P0032,P0032,Cordes,Cordes Partners LLC,3,unchanged
+P0033,P0033,Dakota Bend,Oakwood 56 LLC,3,unchanged
+P0034,P0034,Dundee Village,Dundee Village LLC,3,unchanged
+P0035,P0035,Fast Ave,Fast Ave Properties LLC,1,unchanged
+P0036,P0036,Grandview Apts,15 Unit SC LLC,1,unchanged
+P0037,P0037,Gretna Unit,Gretna Unit LLC,1,unchanged
+P0038,P0038,Heston Pointe,Heston Pointe LLC,1,unchanged
+P0039,P0039,Independence 18,Independence 18 LLC,2,unchanged
+P0040,P0040,Indigo Apts,Marcy's Playground LLC,1,unchanged
+P0041,P0041,Colonial Court & Summit at Midtown,48 SF Unit Portfolio LLC,5,unchanged
+P0042,P0042,Boulder Ridge,Boulder Ridge Partners LLC,14,unchanged
+P0043,P0043,Lincoln Portfolio,Lincoln Portfolio LLC,0,unchanged
+P0044,P0044,Maples,Maples Partners LLC,4,unchanged
+P0045,P0045,Modern Heights,7300 Graceland LLC,1,unchanged
+P0046,P0046,NCCS,NCCS Properties LLC,0,unchanged
+P0047,P0047,OCC Holdings,OCC Holdings LLC,2,unchanged
+P0048,P0048,Park Place,Partners of Park Place LLC,11,unchanged
+P0049,P0049,Patricks Place,Patricks Place Partners LLC,4,unchanged
+P0050,P0050,Preserve,Preserve Partners LLC,9,unchanged
+P0051,P0051,Red Park (5617 S 77 St),Red Park LLC,1,unchanged
+P0052,P0052,Red Park 2 - Duplexes,Red Park 2 LLC,0,unchanged
+P0053,P0053,Aksarben Townhomes,Red Park 2 LLC,0,unchanged
+P0054,P0054,Ridgmar (Woods of Ridgmar),2200 Ridgmar Plaza LLC,2,unchanged
+P0055,P0055,S.I.R.,SIR LLC,4,unchanged
+P0056,P0056,Sandra Ann,Sandra Ann LLC,2,unchanged
+P0057,P0057,Skylark Development,Skylark Development LLC,1,unchanged
+P0058,P0058,Tall Oaks,Tall Oaks Partners LLC,8,unchanged
+P0059,P0059,Vinton Street,Vinton Street Buildings LLC,0,unchanged
+P0060,P0060,38th Ave Development,38th Ave Development LLC,0,unchanged
+P0061,P0061,The Cass (FKA Sonesta),6990 Dodge Street LLC,11,unchanged
+P0062,,Deleted Properties,Deleted Properties,0,dropped_from_new_file
+P0063,P0062,3104 State Street,Luna Capital LLC,1,renumbered
+P0064,P0063,Henry Louis,The Pomerleau Group LLC,1,renumbered
+P0065,P0064,"4544 Nicholas Street, 4509 Lafayett Ave, 4524 Lafayett Ave, Omaha NE",B3 Capital LLC,2,renumbered
+P0066,P0065,The Frederick,4813 Underwood Partners LLC,1,renumbered
+P0067,P0066,505 Wilshire Drive,Fortress Holdings LLC,1,renumbered
+P0068,P0067,115 S 38th Street,115 S 38th Street LLC,1,renumbered
+P0069,P0068,123 S 39th Street,115 S 38th Street LLC,1,renumbered
+P0070,P0069,2437 2nd Avenue,Core Investments LLC,1,renumbered
+P0071,P0070,2518 Woolworth Avenue,BCCN Properties,1,renumbered
+P0072,P0071,356 N 40th Street,BCCN Properties,1,renumbered
+P0073,P0072,829 6th Avenue,CB 5 Plex,1,renumbered
+P0074,P0073,213 N 30th Street,PBC Investments LLC,1,renumbered
+P0075,P0074,Marcy Portfolio,"TC Accommodator 225, LLC",1,renumbered
+P0076,P0075,Marcy Portfolio,"TC Accommodator 225, LLC",1,renumbered
+P0077,P0076,Marcy Portfolio,"TC Accommodator 225, LLC",1,renumbered
+P0078,P0077,N/A Corporate Office,Basilicus Ventures LLC,1,renumbered
+P0079,P0078,2573 Poppleton Avenue,Basilicus Ventures LLC,1,renumbered
+P0080,P0079,916/918 S 25th Street,3012 Dewey Ave LLC,1,renumbered
+P0081,P0080,1114 S 29th Street,BCCN Properties LLC,1,renumbered
+P0082,P0081,2705 Leavenworth Street,MASC Investments LLC,1,renumbered
+P0083,P0082,Linden Court,116 N 37th Street LLC,1,renumbered
+P0084,P0083,Bellevue 36,The Gertrude Apartments LLC,1,renumbered
+P0085,P0084,536 S 31st Avenue,Fast Ave Properties LLC,1,renumbered
+P0086,P0085,5205 S 21st Street,BCCN Properties LLC,1,renumbered
+P0087,,?,2023 they no longer own this property,1,dropped_from_new_file
+P0088,,4319-4325 S 22nd Street,2024 they no longer own this property,1,dropped_from_new_file
+P0089,P0086,Hickman Flats,Hickman Partners LLC,8,renumbered
+P0090,,135 E Sheridan Street,24. Confirmed properties were sold,1,dropped_from_new_file
+P0091,,4915/4917 Davenport Street,24. Confirmed properties were sold,1,dropped_from_new_file
+P0092,,3419 Dewey Avenue,24. Confirmed properties were sold,1,dropped_from_new_file
+P0093,,3146 Chicago Street,24. Confirmed properties were sold,1,dropped_from_new_file
+P0094,P0087,Marcy Portfolio,"TC Accommodator 225, LLC",1,renumbered
+P0095,P0088,100 E Otway Street,Odessa Capital Group LLC,4,renumbered
+P0096,P0089,2501 Leavenworth Street,Basilicus Ventures LLC,1,renumbered
+P0097,P0090,DFIU LLC,DFIU LLC,1,renumbered
+P0098,P0091,BCCN Properties LLC,BCCN Properties LLC,0,renumbered
+P0099,P0092,South 24th St. Apartments,Core Investments LLC,1,renumbered
+P0100,P0093,3860 Dodge Street,Fast Ave Properties LLC,1,renumbered
+P0101,P0094,Blackstone,MFT Invest LLC,3,renumbered
+P0102,P0095,117 S 38th Avenue,115 S 38th Street LLC,1,renumbered
+P0103,P0096,DFIU LLC,DFIU LLC,1,renumbered
+P0104,P0097,DFIU LLC,DFIU LLC,1,renumbered
+P0105,P0098,3265 Davenport Street,Gertrude Apartments LLC,1,renumbered
+P0106,P0099,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0107,P0100,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0108,P0101,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0109,P0102,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0110,P0103,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0111,P0104,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0112,P0105,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0113,P0106,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0114,P0107,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0115,P0108,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0116,P0109,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0117,P0110,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0118,P0111,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0119,P0112,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0120,P0113,Lincoln Portfolio LLC,Lincoln Portfolio LLC,1,renumbered
+P0121,P0114,Colonial SOMA,Colonial SOMA LLC,1,renumbered
+P0122,P0115,BTM Construction LLC / Brick Town Construction LLC,BTM Construction LLC,1,renumbered
+P0123,P0116,13763 Poppleton Circle,Galaxy Title LLC,1,renumbered
+P0124,P0117,15th Street 9 Plex,NCCS Properties LLC,1,renumbered
+P0125,P0118,Jefferson Commons,Original Three LLC,1,renumbered
+P0126,P0119,Jefferson Commons,Original Three LLC,14,renumbered
