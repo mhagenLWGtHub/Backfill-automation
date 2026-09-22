@@ -1,0 +1,127 @@
+property_id,common_name,spe_legal_name,parent_company,city,state,unit_count,ownership_code,primary_pm,status,source,auto_write_ok,flags,notes
+P0001,Estrella at Kiest,4542 West Kiest Blvd LLC,4542 Kiest Joint Ventures LLC,Dallas,TX,232,CC,AppFolio,active,entity_map_03/25/26,Y,,Dallas TX - 232 units
+P0002,BG Flats,BG Champion Partners LLC,BG Champion Partners LLC,Rapid City,SD,42,CC,AppFolio,active,entity_map_03/25/26,N,spe_not_unique,Rapid City SD - 42 units
+P0003,Champion Villas,BG Champion Partners LLC,BG Champion Partners LLC,Rapid City,SD,81,CC,AppFolio,active,entity_map_03/25/26,N,spe_not_unique,Rapid City SD - 81 units; also in Buildium
+P0004,Eagle Creek,Eagle Annex Partners LLC,Eagle Annex LLC,Brandon,SD,65,CC,AppFolio,active,entity_map_03/25/26,N,spe_not_unique,Brandon SD - 65 units; also in Buildium
+P0005,Langston Annex,Eagle Annex Partners LLC,Eagle Annex LLC,Omaha,NE,80,CC,AppFolio,active,entity_map_03/25/26,N,spe_not_unique,Omaha NE - 80 units; also in Buildium
+P0006,Keystone (The Beverly),Keystone Neighborhood LLC,Midwest Portfolio [1] LLC,Wichita,KS,176,CC,AppFolio,active,entity_map_03/25/26,Y,,Wichita KS - 176 units
+P0007,500 S Dakota,500 S Dakota Ave LLC,Midwest Portfolio 3 LLC,Sioux Falls,SD,22,CC,AppFolio,active,entity_map_03/25/26,Y,,Sioux Falls SD - 22 units
+P0008,1003 Avenue K,1003 Avenue K LLC,Midwest Portfolio 4 LLC,Carter Lake,IA,20,CC,AppFolio,active,entity_map_03/25/26,Y,,Carter Lake IA - 20 units
+P0009,1851 Todd Road,1851 Todd Road LLC,Midwest Portfolio 4 LLC,Manhattan,KS,20,CC,AppFolio,active,entity_map_03/25/26,Y,,Manhattan KS - 20 units; also in Buildium
+P0010,Villa Blanca,2706 N 75 St LLC,Midwest Portfolio 4 LLC,Omaha,NE,24,CC,AppFolio,active,entity_map_03/25/26,Y,,Omaha NE - 24 units
+P0011,Venice,4916 California Street LLC,Midwest Portfolio 4 LLC,Omaha,NE,11,CC,AppFolio,active,entity_map_03/25/26,Y,,Omaha NE - 11 units
+P0012,9447 J Street,9447 J Street LLC,Midwest Portfolio 4 LLC,Omaha,NE,,CC,AppFolio,active,entity_map_03/25/26,Y,,Omaha NE - industrial
+P0013,Cedar Haven Duplexes,NDD Partners LLC,LeavenWealth Holdings LLC,Wichita,KS,34,CC,AppFolio,active,entity_map_03/25/26,Y,,Wichita KS - 34 units; also in Buildium
+P0014,Lions Gate,Lions Gate Partners LLC,Lions Gate Partners LLC,Newton,IA,38,CC,AppFolio,active,entity_map_03/25/26,Y,,Newton IA - 38 units; also in Buildium
+P0015,Cleveland Partners (Greenway 1),Cleveland Partners LLC,Midwest Portfolio 8 LLC,Sioux Falls,SD,56,CC,AppFolio,active,entity_map_03/25/26,Y,,Sioux Falls SD - 56 units
+P0016,Townpark Townhomes (Greenway 2),Townpark Townhomes LLC,Midwest Portfolio 8 LLC,Sioux Falls,SD,70,CC,AppFolio,active,entity_map_03/25/26,Y,,Sioux Falls SD - 70 units
+P0017,Sarpy Douglas / The Vincent,,Sarpy Douglas Investments LLC,Omaha,NE,,CC,AppFolio,active,entity_map_03/25/26,N,spe_not_unique;spe_placeholder,"Omaha NE; covers Sandra Ann, West Gold Coast, 116 N 37th"
+P0018,Doral Apartments,Doral Partners LLC,Doral Partners LLC,Rapid City,SD,60,CC,AppFolio,active,entity_map_03/25/26,N,recent_acquisition,Rapid City SD - 60 units; PM: RPME; acquired 4/28/26; ⚠️ add to SOV
+P0019,Bancroft Place Apartments,Bancroft Place Apts LLC,Boulder Bancroft Partners LLC,Sioux Falls,SD,52,CC,PGO,active,entity_map_03/25/26,Y,,Sioux Falls SD - 52 units; HUD
+P0020,Boulder Pointe Townhomes,Boulder Pointe Townhomes LLC,Boulder Bancroft Partners LLC,Sioux Falls,SD,52,CC,PGO,active,entity_map_03/25/26,Y,,Sioux Falls SD - 52 units; HUD
+P0021,Brent Village,Brent Partners LLC,BVP LLC,Bellevue,NE,180,CC,PGO,active,entity_map_03/25/26,Y,,Bellevue NE - 180 units
+P0022,Capital City Villas,Capital Villas Partners LLC,Midwest Portfolio 5 LLC,Lincoln,NE,67,CC,PGO,active,entity_map_03/25/26,Y,,Lincoln NE - 67 units
+P0023,College Heights,College Heights Partners LLC,Midwest Portfolio 5 LLC,Manhattan,KS,22,CC,PGO,active,entity_map_03/25/26,Y,,Manhattan KS - 22 units
+P0024,Judee,Judee Partners LLC,Midwest Portfolio 5 LLC,Sioux Falls,SD,56,CC,PGO,active,entity_map_03/25/26,Y,,Sioux Falls SD - 56 units
+P0025,Adventureland Village,Adventureland Village Partners LLC,Midwest Portfolio 7 LLC,Altoona,IA,72,CC,PGO,active,entity_map_03/25/26,Y,,Altoona IA - 72 units
+P0026,Altoona Terrace,Altoona Terrace Partners LLC,Midwest Portfolio 7 LLC,Altoona,IA,84,CC,PGO,active,entity_map_03/25/26,Y,,Altoona IA - 84 units
+P0027,Franklin Court,Franklin Court Partners LLC,Midwest Portfolio 7 LLC,Des Moines,IA,172,CC,PGO,active,entity_map_03/25/26,Y,,Des Moines IA - 172 units
+P0028,NB Brothers,NB Brothers LLC,NB Brothers LLC,Omaha,NE,3,CC,PGO,active,entity_map_03/25/26,Y,,Omaha NE - 3 units
+P0029,Jefferson Commons,Original 3 LLC,Original 3 LLC,Sioux Falls,SD,16,CC,PGO,active,entity_map_03/25/26,Y,,Sioux Falls SD - 16 units
+P0030,CB 5 Plex,CB 5 Plex LLC,CB 5 Plex LLC,Council Bluffs,IA,5,CC,PGO,active,entity_map_03/25/26,Y,,Council Bluffs IA - 5 units
+P0031,Copperleaf,Copperleaf Investments LLC,Copperleaf Investments LLC,Omaha,NE,87,CC,PGO,active,entity_map_03/25/26,Y,,Omaha NE - 87 units
+P0032,Cordes,Cordes Partners LLC,Cordes Partners LLC,Omaha,NE,24,CC,PGO,active,entity_map_03/25/26,Y,,Omaha NE - 24 units
+P0033,Dakota Bend,Oakwood 56 LLC,Midwest Portfolio 3 LLC,South Sioux City,NE,56,CC,PGO,active,entity_map_03/25/26,Y,,South Sioux City NE - 56 units
+P0034,Dundee Village,Dundee Village LLC,Dundee Village LLC,Omaha,NE,20,CKP,PGO,active,entity_map_03/25/26,Y,,Omaha NE - 20 units
+P0035,Fast Ave,Fast Ave Properties LLC,Fast Ave Properties LLC,Omaha,NE,7,CC,PGO,active,entity_map_03/25/26,Y,,Omaha NE - 7 units
+P0036,Grandview Apts,15 Unit SC LLC,Midwest Portfolio 4 LLC,Sioux City,IA,15,CC,PGO,active,entity_map_03/25/26,Y,,Sioux City IA - 15 units
+P0037,Gretna Unit,Gretna Unit LLC,Gretna Unit LLC,Gretna,NE,,CC,PGO,active,entity_map_03/25/26,Y,,Gretna NE - development
+P0038,Heston Pointe,Heston Pointe LLC,Heston Pointe LLC,Tulsa,OK,64,CC,PGO,active,entity_map_03/25/26,Y,,Tulsa OK - 64 units
+P0039,Independence 18,Independence 18 LLC,Midwest Portfolio [1] LLC,Independence,MO,20,CC,PGO,active,entity_map_03/25/26,Y,,Independence MO - 20 units
+P0040,Indigo Apts,Marcy's Playground LLC,Midwest Portfolio 2 LLC,Omaha,NE,12,CC,PGO,active,entity_map_03/25/26,Y,,Omaha NE - 12 units
+P0041,Colonial Court & Summit at Midtown,48 SF Unit Portfolio LLC,Midwest Portfolio 2 LLC,Sioux Falls,SD,47,CC,PGO,active,entity_map_03/25/26,Y,,Sioux Falls SD - 47 units
+P0042,Boulder Ridge,Boulder Ridge Partners LLC,Midwest Portfolio [1] LLC,Pleasant Hill,IA,46,CC,PGO,active,entity_map_03/25/26,Y,,Pleasant Hill IA - 46 units
+P0043,Lincoln Portfolio,Lincoln Portfolio LLC,Lincoln Portfolio LLC,Lincoln,NE,99,CC,PGO,active,entity_map_03/25/26,Y,,Lincoln NE - 99 units
+P0044,Maples,Maples Partners LLC,Maples Partners LLC,Sioux Falls,SD,77,CC,PGO,active,entity_map_03/25/26,Y,,Sioux Falls SD - 77 units
+P0045,Modern Heights,7300 Graceland LLC,7300 Graceland LLC,Omaha,NE,165,CC,PGO,active,entity_map_03/25/26,Y,,Omaha NE - 165 units; legal/entity name = 7300 Graceland LLC
+P0046,NCCS,NCCS Properties LLC,NCCS Properties LLC,Sioux Falls,SD,9,CC,PGO,active,entity_map_03/25/26,Y,,Sioux Falls SD - 9 units
+P0047,OCC Holdings,OCC Holdings LLC,OCC Holdings LLC,Council Bluffs,IA,,CC,PGO,active,entity_map_03/25/26,Y,,Council Bluffs IA
+P0048,Park Place,Partners of Park Place LLC,Partners of Park Place LLC,Manhattan,KS,262,CC,PGO,active,entity_map_03/25/26,Y,,Manhattan KS - 262 units
+P0049,Patricks Place,Patricks Place Partners LLC,Patricks Place Partners LLC,Papillion,NE,48,CC,PGO,active,entity_map_03/25/26,Y,,Papillion NE - 48 units
+P0050,Preserve,Preserve Partners LLC,Preserve Partners LLC,Sioux Falls,SD,72,CC,PGO,active,entity_map_03/25/26,Y,,Sioux Falls SD - 72 units
+P0051,Red Park (5617 S 77 St),Red Park LLC,Red Park LLC,Ralston,NE,8,CC,PGO,active,entity_map_03/25/26,Y,,Ralston NE - 8 units
+P0052,Red Park 2 - Duplexes,Red Park 2 LLC,Red Park 2 LLC,Omaha,NE,10,CC,PGO,active,entity_map_03/25/26,Y,,Omaha NE - 10 units
+P0053,Aksarben Townhomes,Red Park 2 LLC,Red Park 2 LLC,Omaha,NE,24,CC,PGO,active,entity_map_03/25/26,Y,,Omaha NE - 24 units; same parent as Red Park 2 Duplexes
+P0054,Ridgmar (Woods of Ridgmar),2200 Ridgmar Plaza LLC,Ridgmar Partners LLC,Fort Worth,TX,235,CC,PGO,active,entity_map_03/25/26,Y,,Fort Worth TX - 235 units
+P0055,S.I.R.,SIR LLC,SIR LLC,Council Bluffs,IA,5,CKP,PGO,active,entity_map_03/25/26,Y,,Council Bluffs IA - 5 units
+P0056,Sandra Ann,Sandra Ann LLC,Sarpy Douglas Investments LLC,Omaha,NE,26,CC,PGO,active,entity_map_03/25/26,Y,,Omaha NE - 26 units
+P0057,Skylark Development,Skylark Development LLC,Skylark Development LLC,Omaha,NE,,CC,PGO,active,entity_map_03/25/26,Y,,Omaha NE - land
+P0058,Tall Oaks,Tall Oaks Partners LLC,Tall Oaks Partners LLC,Pleasant Valley,MO,52,CC,PGO,active,entity_map_03/25/26,Y,,Pleasant Valley MO - 52 units
+P0059,Vinton Street,Vinton Street Buildings LLC,Vinton Street Buildings LLC,Omaha,NE,10,CCS,PGO,active,entity_map_03/25/26,Y,,Omaha NE - 10 units
+P0060,38th Ave Development,38th Ave Development LLC,38th Ave Development LLC,Omaha,NE,,CC,PGO,active,entity_map_03/25/26,Y,,Omaha NE - development
+P0061,The Cass (FKA Sonesta),6990 Dodge Street LLC,6990 Dodge Street LLC,Omaha,NE,80,CC,PGO,active,entity_map_03/25/26,N,recent_acquisition,Omaha NE - 80 units; acquired 12/15/25; ⚠️ add to SREO at 3/31/26
+P0062,Deleted Properties,Deleted Properties,,,,,,,sold,sov_09/30/25,Y,,sold (date unknown)
+P0063,3104 State Street,Luna Capital LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold (date unknown)
+P0064,Henry Louis,The Pomerleau Group LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 1/5/22
+P0065,"4544 Nicholas Street, 4509 Lafayett Ave, 4524 Lafayett Ave, Omaha NE",B3 Capital LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 1/21/22
+P0066,The Frederick,4813 Underwood Partners LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 3/9/22
+P0067,505 Wilshire Drive,Fortress Holdings LLC,,Bellevue,NE,,,,sold,sov_09/30/25,Y,,sold 8/9/22
+P0068,115 S 38th Street,115 S 38th Street LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 9/6/22
+P0069,123 S 39th Street,115 S 38th Street LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 10/11/2022
+P0070,2437 2nd Avenue,Core Investments LLC,,Council Bluffs,IA,,,,sold,sov_09/30/25,Y,,sold 11/15/2022
+P0071,2518 Woolworth Avenue,BCCN Properties,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 12/1/2022
+P0072,356 N 40th Street,BCCN Properties,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 3/27/2023
+P0073,829 6th Avenue,CB 5 Plex,,Council Bluffs,IA,,,,sold,sov_09/30/25,Y,,sold 3/31/2023
+P0074,213 N 30th Street,PBC Investments LLC,,Council Bluffs,IA,,,,sold,sov_09/30/25,Y,,sold 2/15/2023
+P0075,Marcy Portfolio,"TC Accommodator 225, LLC",,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 5/16/2023
+P0076,Marcy Portfolio,"TC Accommodator 225, LLC",,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 5/23/2023
+P0077,Marcy Portfolio,"TC Accommodator 225, LLC",,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 5/23/2023
+P0078,N/A Corporate Office,Basilicus Ventures LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 6/16/2023
+P0079,2573 Poppleton Avenue,Basilicus Ventures LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 4/1/2022
+P0080,916/918 S 25th Street,3012 Dewey Ave LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 7/6/2023
+P0081,1114 S 29th Street,BCCN Properties LLC,,NE,68105,,,,sold,sov_09/30/25,Y,,sold 8/4/2023
+P0082,2705 Leavenworth Street,MASC Investments LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 9/5/2023
+P0083,Linden Court,116 N 37th Street LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 10/16/2023
+P0084,Bellevue 36,The Gertrude Apartments LLC,,Bellevue,NE,,,,sold,sov_09/30/25,Y,,sold 11/21/2023
+P0085,536 S 31st Avenue,Fast Ave Properties LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 12/5/2023
+P0086,5205 S 21st Street,BCCN Properties LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 12/8/2023
+P0087,?,2023 they no longer own this property,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 12/29/2023
+P0088,4319-4325 S 22nd Street,2024 they no longer own this property,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 1/3/2024
+P0089,Hickman Flats,Hickman Partners LLC,,Des Moines,IA,,,,sold,sov_09/30/25,Y,,sold 12/6/2023
+P0090,135 E Sheridan Street,24. Confirmed properties were sold,,Papillion,NE,,,,sold,sov_09/30/25,Y,,sold 6/24/24
+P0091,4915/4917 Davenport Street,24. Confirmed properties were sold,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 6/24/24
+P0092,3419 Dewey Avenue,24. Confirmed properties were sold,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 6/24/24
+P0093,3146 Chicago Street,24. Confirmed properties were sold,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 6/24/24
+P0094,Marcy Portfolio,"TC Accommodator 225, LLC",,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 6/21/2024
+P0095,100 E Otway Street,Odessa Capital Group LLC,,Odessa,MO,,,,sold,sov_09/30/25,Y,,sold 9/30/2024
+P0096,2501 Leavenworth Street,Basilicus Ventures LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 9/27/2024
+P0097,DFIU LLC,DFIU LLC,,Blair,NE,,,,sold,sov_09/30/25,Y,,sold 10/25/2024
+P0098,BCCN Properties LLC,BCCN Properties LLC,,,,,,,sold,sov_09/30/25,Y,,sold 12/23/2024
+P0099,South 24th St. Apartments,Core Investments LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 11/15/2024
+P0100,3860 Dodge Street,Fast Ave Properties LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 2/3/2025
+P0101,Blackstone,MFT Invest LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold (date unknown)
+P0102,117 S 38th Avenue,115 S 38th Street LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 1/31/25
+P0103,DFIU LLC,DFIU LLC,,Blair,NE,,,,sold,sov_09/30/25,Y,,sold 2/27/2025
+P0104,DFIU LLC,DFIU LLC,,Blair,NE,,,,sold,sov_09/30/25,Y,,sold 3/21/2025
+P0105,3265 Davenport Street,Gertrude Apartments LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 4/21/2025
+P0106,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 4/23/2025
+P0107,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 6/6/2025
+P0108,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 6/6/2025
+P0109,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 6/6/2025
+P0110,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 6/16/2025
+P0111,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 8/7/2025
+P0112,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 11/13/2025
+P0113,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 12/25/2025
+P0114,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 12/25/2025
+P0115,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 12/25/2025
+P0116,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 12/25/2025
+P0117,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 12/25/2025
+P0118,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 12/25/2025
+P0119,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 12/31/2025
+P0120,Lincoln Portfolio LLC,Lincoln Portfolio LLC,,Lincoln,NE,,,,sold,sov_09/30/25,Y,,sold 5/15/2026
+P0121,Colonial SOMA,Colonial SOMA LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 6/17/2025
+P0122,BTM Construction LLC / Brick Town Construction LLC,BTM Construction LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold 1/27/2025
+P0123,13763 Poppleton Circle,Galaxy Title LLC,,Omaha,NE,,,,sold,sov_09/30/25,Y,,sold (date unknown)
+P0124,15th Street 9 Plex,NCCS Properties LLC,,Sioux Falls,SD,,,,sold,sov_09/30/25,Y,,sold 4/29/2026
+P0125,Jefferson Commons,Original Three LLC,,Sioux Falls,SD,,,,sold,sov_09/30/25,Y,,sold 5/29/2026
+P0126,Jefferson Commons,Original Three LLC,,Sioux Falls,SD,,,,sold,sov_09/30/25,Y,,sold 5/29/2026

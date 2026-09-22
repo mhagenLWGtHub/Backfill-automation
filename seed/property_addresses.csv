@@ -1,0 +1,306 @@
+property_id,address_line,city,state,zip,parcel_id,structure_note,is_primary,match_level,match_method,source
+P0031,4206 Frances Street,Omaha,NE,68105,0515140002,,Y,spe,exact,sov_09/30/25
+P0031,4206 Frances Street,Omaha,NE,68105,,Garage,N,spe,exact,sov_09/30/25
+P0031,4206 Frances Street,Omaha,NE,68105,,Street Shed,N,spe,exact,sov_09/30/25
+P0031,4216 Frances Street,Omaha,NE,68105,,,N,spe,exact,sov_09/30/25
+P0031,4226 Frances Street,Omaha,NE,68105,,,N,spe,exact,sov_09/30/25
+P0032,504 Cordes Drive,Papillion,NE,68046,010419233,,Y,spe,exact,sov_09/30/25
+P0032,602 Cordes Drive,Papillion,NE,68046,,,N,spe,exact,sov_09/30/25
+P0032,604 Cordes Drive,Papillion,NE,68046,,,N,spe,exact,sov_09/30/25
+P0034,816 N 46th Street,Omaha,NE,68132,,,Y,spe,exact,sov_09/30/25
+P0034,818-828 N 46th Street,Omaha,NE,68132,,,N,spe,exact,sov_09/30/25
+P0034,828 N 46th Street,Omaha,NE,68132,,,N,spe,exact,sov_09/30/25
+P0004,106 S Sandstone Avenue,Brandon,SD,57005,,,Y,property,exact,sov_09/30/25
+P0004,7110-7116 Jones Circle,Omaha,NE,68106,1919872510,,N,property,exact,sov_09/30/25
+P0038,4646 S Fulton Avenue,Tulsa,OK,74135,,,Y,spe,exact,sov_09/30/25
+P0048,1408-1420 Cambridge Place,Manhattan,KS,66502,,,Y,spe,exact,sov_09/30/25
+P0048,1409-1421 Cambridge Place,Manhattan,KS,66502,,,N,spe,exact,sov_09/30/25
+P0048,1430 Cambridge Place,Manhattan,KS,66502,,,N,spe,exact,sov_09/30/25
+P0048,1431 Cambridge Place,Manhattan,KS,66502,,,N,spe,exact,sov_09/30/25
+P0048,1500 Oxford Place,Manhattan,KS,66502,,,N,spe,exact,sov_09/30/25
+P0048,1508 Oxford Place,Manhattan,KS,66502,,,N,spe,exact,sov_09/30/25
+P0048,1501-1511 Oxford Place,Manhattan,KS,66502,,,N,spe,exact,sov_09/30/25
+P0048,1516-1528 Oxford Place,Manhattan,KS,66502,,,N,spe,exact,sov_09/30/25
+P0048,1517-1529 Oxford Place,Manhattan,KS,66502,,,N,spe,exact,sov_09/30/25
+P0048,1430 Cambridge Place,Manhattan,KS,66502,,FLOOD,N,spe,exact,sov_09/30/25
+P0048,1516-1528 Oxford Place,Manhattan,KS,66502,,FLOOD,N,spe,exact,sov_09/30/25
+P0049,1224 Golden Gate Drive,Papillion,NE,68046,,,Y,property,exact,sov_09/30/25
+P0049,1260 Golden Gate Drive,Papillion,NE,68046,,,N,property,exact,sov_09/30/25
+P0049,1264 Golden Gate Drive,Papillion,NE,68046,,,N,property,exact,sov_09/30/25
+P0049,1268 Golden Gate Drive,Papillion,NE,68046,,,N,property,exact,sov_09/30/25
+P0056,5820 Erskine Street,Omaha,NE,68104,2138500000,,Y,spe,exact,sov_09/30/25
+P0056,5820 Erskine Street Garage,Omaha,NE,68104,,,N,spe,exact,sov_09/30/25
+P0058,7001 Chas Drive,Pleasant Valley,MO,64068,,,Y,spe,exact,sov_09/30/25
+P0058,7005 Chas Drive,Pleasant Valley,MO,64068,,,N,spe,exact,sov_09/30/25
+P0058,7009 Chas Drive,Pleasant Valley,MO,64068,,,N,spe,exact,sov_09/30/25
+P0058,7015 Chas Drive,Pleasant Valley,MO,64068,,,N,spe,exact,sov_09/30/25
+P0058,7101 Chas Drive,Pleasant Valley,MO,64068,,,N,spe,exact,sov_09/30/25
+P0058,7103 Chas Drive,Pleasant Valley,MO,64068,,,N,spe,exact,sov_09/30/25
+P0058,7105 Chas Drive,Pleasant Valley,MO,64068,,,N,spe,exact,sov_09/30/25
+P0058,7013 Chas Drive,Pleasant Valley,MO,64068,,,N,spe,exact,sov_09/30/25
+P0044,2601 N Maple Lane,Sioux Falls,SD,57107,,,Y,spe,exact,sov_09/30/25
+P0044,2701 N Maple Lane,Sioux Falls,SD,57107,,,N,spe,exact,sov_09/30/25
+P0044,2600 N Career Avenue,Sioux Falls,SD,57107,,,N,spe,exact,sov_09/30/25
+P0044,2608 N Career Avenue,Sioux Falls,SD,57107,,,N,spe,exact,sov_09/30/25
+P0050,4009 S Locust Drive,Sioux Falls,SD,57105,,,Y,spe,exact,sov_09/30/25
+P0050,4101 S Locust Drive,Sioux Falls,SD,57105,,,N,spe,exact,sov_09/30/25
+P0050,4105 S Locust Drive,Sioux Falls,SD,57105,,,N,spe,exact,sov_09/30/25
+P0050,4201 S Locust Drive,Sioux Falls,SD,57105,,,N,spe,exact,sov_09/30/25
+P0050,4205 S Locust Drive,Sioux Falls,SD,57105,,,N,spe,exact,sov_09/30/25
+P0050,100 E Lotta Street,Sioux Falls,SD,57105,,,N,spe,exact,sov_09/30/25
+P0050,116 E Lotta Street,Sioux Falls,SD,57105,,,N,spe,exact,sov_09/30/25
+P0050,117 E Twin Oaks Place,Sioux Falls,SD,57105,,,N,spe,exact,sov_09/30/25
+P0050,133 E Twin Oaks Place,Sioux Falls,SD,57105,,,N,spe,exact,sov_09/30/25
+P0017,105 West Gold Coast Road,Papillion,NE,68046,,,Y,dba,exact,sov_09/30/25
+P0054,2200 Taxco Road,Fort Worth,TX,76116,,,Y,spe,exact,sov_09/30/25
+P0054,2200 Ridgmar Plaza,Fort Worth,TX,76116,,,N,spe,exact,sov_09/30/25
+P0042,410 Hillside Court,Pleasant Hill,IA,50327,,,Y,spe,exact,sov_09/30/25
+P0042,420 Hillside Court,Pleasant Hill,IA,50327,,,N,spe,exact,sov_09/30/25
+P0042,440 Hillside Court,Pleasant Hill,IA,50327,,,N,spe,exact,sov_09/30/25
+P0042,405-409 Hillside Court,Pleasant Hill,IA,50327,,,N,spe,exact,sov_09/30/25
+P0042,415-419 Hillside Court,Pleasant Hill,IA,50327,,,N,spe,exact,sov_09/30/25
+P0042,425-429 Hillside Court,Pleasant Hill,IA,50327,,,N,spe,exact,sov_09/30/25
+P0042,435-439 Hillside Court,Pleasant Hill,IA,50327,,,N,spe,exact,sov_09/30/25
+P0042,445-449 Hillside Court,Pleasant Hill,IA,50327,,,N,spe,exact,sov_09/30/25
+P0042,455-459 Hillside Court,Pleasant Hill,IA,50327,,,N,spe,exact,sov_09/30/25
+P0042,465-469 Hillside Court,Pleasant Hill,IA,50327,,,N,spe,exact,sov_09/30/25
+P0042,475-479 Hillside Court,Pleasant Hill,IA,50327,,,N,spe,exact,sov_09/30/25
+P0042,485-489 Hillside Court,Pleasant Hill,IA,50327,,,N,spe,exact,sov_09/30/25
+P0042,495-499 Hillside Court,Pleasant Hill,IA,50327,,,N,spe,exact,sov_09/30/25
+P0042,480-484 Hillside Court,Pleasant Hill,IA,50327,,,N,spe,exact,sov_09/30/25
+P0006,758 Sylvan Lane,Wichita,KS,67218,,,Y,spe,exact,sov_09/30/25
+P0039,321 W South Street,Independence,MO,64050,,,Y,spe,exact,sov_09/30/25
+P0039,955 Leroy Street,Independence,MO,64050,,,N,spe,exact,sov_09/30/25
+P0041,215 S Menlo Avenue,Sioux Falls,SD,57104,,,Y,spe,exact,sov_09/30/25
+P0041,219 S Menlo Avenue,Sioux Falls,SD,57104,,,N,spe,exact,sov_09/30/25
+P0041,214 S Grange Avenue,Sioux Falls,SD,57104,,,N,spe,exact,sov_09/30/25
+P0041,700 S Summit Avenue,Sioux Falls,SD,57104,,,N,spe,exact,sov_09/30/25
+P0041,615 W 15th Street,Sioux Falls,SD,57104,,,N,spe,exact,sov_09/30/25
+P0040,3009 Marcy Street,Omaha,NE,68105,0536880000,,Y,spe,exact,sov_09/30/25
+P0033,300 W 33rd Street,Sioux City,NE,68776,,,Y,dba,exact,sov_09/30/25
+P0033,310 W 33rd Street,Sioux City,NE,68776,,,N,dba,exact,sov_09/30/25
+P0033,316 E 16th Street,Sioux City,NE,68776,,,N,dba,exact,sov_09/30/25
+P0007,500 S Dakota Avenue,Sioux Falls,SD,57104,,,Y,spe,exact,sov_09/30/25
+P0011,4916 California Street,Omaha,NE,68132,0951430000,,Y,property,exact,sov_09/30/25
+P0009,1851 Todd Road - Bldg. 1,Manhattan,KS,66502,,,Y,spe,exact,sov_09/30/25
+P0009,1851 Todd Road - Bldg. 2,Manhattan,KS,66502,,,N,spe,exact,sov_09/30/25
+P0009,1851 Todd Road - Bldg. 3,Manhattan,KS,66502,,,N,spe,exact,sov_09/30/25
+P0009,1851 Todd Road - Bldg. 4,Manhattan,KS,66502,,,N,spe,exact,sov_09/30/25
+P0009,1851 Todd Road - Bldg. 5,Manhattan,KS,66502,,,N,spe,exact,sov_09/30/25
+P0009,1851 Todd Road - Shed,Manhattan,KS,66502,,,N,spe,exact,sov_09/30/25
+P0012,9447 J Street,Omaha,NE,68127,0125090016,,Y,spe,exact,sov_09/30/25
+P0036,301 21st Street,Sioux City,IA,51104,,,Y,spe,exact,sov_09/30/25
+P0010,2706 N 75th Street,Omaha,NE,68134,,,Y,property,exact,sov_09/30/25
+P0010,2706 N 75th Street - Garage 1,Omaha,NE,68134,,,N,property,exact,sov_09/30/25
+P0010,2706 N 75th Street - Garage 2,Omaha,NE,68134,,,N,property,exact,sov_09/30/25
+P0008,1003-1005 Avenue K,Carter Lake,IA,51510,754421151002,,Y,spe,exact,sov_09/30/25
+P0022,2501 N Street,Lincoln,NE,68510,,,Y,dba,exact,sov_09/30/25
+P0022,2520 M Street,Lincoln,NE,68510,,,Y,dba,exact,sov_09/30/25
+P0024,1701 East Northstar Place,Sioux Falls,SD,57108,,,Y,spe,exact,sov_09/30/25
+P0024,1705 East Northstar Place,Sioux Falls,SD,57108,,,N,spe,exact,sov_09/30/25
+P0024,1709 East Northstar Place,Sioux Falls,SD,57108,,,N,spe,exact,sov_09/30/25
+P0024,1715 East Northstar Place,Sioux Falls,SD,57108,,,N,spe,exact,sov_09/30/25
+P0023,1947 College Heights Road,Manhattan,KS,66502,216-13-0-10-01-007.00-0,,Y,spe,exact,sov_09/30/25
+P0025,807 14th Ave NW A27,Altoona,IA,50009,,,Y,spe,exact,sov_09/30/25
+P0026,"1108 4th St SW, Altoona",Altoona,IA,50009,,,Y,spe,exact,sov_09/30/25
+P0027,4925 Franklin Ave,Des Moines,IA,50310,,,Y,spe,exact,sov_09/30/25
+P0002,3200 Jaffa Garden Way,Rapid City,SD,57703,,,Y,property,exact,sov_09/30/25
+P0003,3220 Champion Drive,Rapid City,SD,57703,,,Y,property,exact,sov_09/30/25
+P0047,500 Willow Avenue,Council Bluffs,IA,51503,754436203011,,Y,spe,exact,sov_09/30/25
+P0047,127 Pearl Street,Council Bluffs,IA,51503,,,Y,spe,exact,sov_09/30/25
+P0001,4542 W. Kiest Blvd.,Dallas,TX,75236,,,Y,spe,exact,sov_09/30/25
+P0035,102 N 38th Avenue,Omaha,NE,68131,0910790000,,Y,spe,exact,sov_09/30/25
+P0014,320 W 3rd Street N,Newton,IA,50208,,,Y,spe,exact,sov_09/30/25
+P0051,5617 South 77th Street,Ralston,NE,68127,2044760004,,Y,spe,exact,sov_09/30/25
+P0028,3004 Marcy Street,Omaha,NE,68105,,,Y,spe,exact,sov_09/30/25
+P0019,1601 E 8th Street,Sioux Falls,SD,57103,030035,,Y,property,exact,sov_09/30/25
+P0019,Garage,Sioux Falls,SD,57103,,,N,property,exact,sov_09/30/25
+P0019,137 N Mable,Sioux Falls,SD,57103,030035,,N,property,exact,sov_09/30/25
+P0019,Garage,Sioux Falls,SD,57103,,,N,property,exact,sov_09/30/25
+P0019,100 N Blauvelt,Sioux Falls,SD,57103,030035,,N,property,exact,sov_09/30/25
+P0019,Garage,Sioux Falls,SD,57103,,,N,property,exact,sov_09/30/25
+P0019,115 N Mable,Sioux Falls,SD,57103,030035,,N,property,exact,sov_09/30/25
+P0019,Garage,Sioux Falls,SD,57103,,,N,property,exact,sov_09/30/25
+P0019,112 S Blauvelt,Sioux Falls,SD,57103,030035,,N,property,exact,sov_09/30/25
+P0019,Garage,Sioux Falls,SD,57103,,,N,property,exact,sov_09/30/25
+P0019,101 S Mable,Sioux Falls,SD,57103,030035,,N,property,exact,sov_09/30/25
+P0019,Garage,Sioux Falls,SD,57103,,,N,property,exact,sov_09/30/25
+P0019,113 S Mable,Sioux Falls,SD,57103,030035,,N,property,exact,sov_09/30/25
+P0019,Garage,Sioux Falls,SD,57103,,,N,property,exact,sov_09/30/25
+P0019,124 S Blauvelt,Sioux Falls,SD,57103,030035,,N,property,exact,sov_09/30/25
+P0019,Garage,Sioux Falls,SD,57103,,,N,property,exact,sov_09/30/25
+P0020,7601 W Snapdragon Street,Sioux Falls,SD,57106,083517,,Y,spe,exact,sov_09/30/25
+P0020,Garage,Sioux Falls,SD,57106,,,N,spe,exact,sov_09/30/25
+P0020,7605 W Snapdragon Street,Sioux Falls,SD,57106,083938,,N,spe,exact,sov_09/30/25
+P0020,Garage,Sioux Falls,SD,57106,,,N,spe,exact,sov_09/30/25
+P0020,7609 W Snapdragon Street,Sioux Falls,SD,57106,083937,,N,spe,exact,sov_09/30/25
+P0020,Garage,Sioux Falls,SD,57106,,,N,spe,exact,sov_09/30/25
+P0020,7701 W Snapdragon Street,Sioux Falls,SD,57106,083936,,N,spe,exact,sov_09/30/25
+P0020,Garage,Sioux Falls,SD,57106,,,N,spe,exact,sov_09/30/25
+P0020,7705 W Snapdragon Street,Sioux Falls,SD,57106,083935,,N,spe,exact,sov_09/30/25
+P0020,Garage,Sioux Falls,SD,57106,,,N,spe,exact,sov_09/30/25
+P0020,7709 W Snapdragon Street,Sioux Falls,SD,57106,083934,,N,spe,exact,sov_09/30/25
+P0020,Garage,Sioux Falls,SD,57106,,,N,spe,exact,sov_09/30/25
+P0020,7713 W Snapdragon Street,Sioux Falls,SD,57106,083933,,N,spe,exact,sov_09/30/25
+P0020,Garage,Sioux Falls,SD,57106,,,N,spe,exact,sov_09/30/25
+P0020,7717 W Snapdragon Street,Sioux Falls,SD,57106,083932,,N,spe,exact,sov_09/30/25
+P0020,Garage,Sioux Falls,SD,57106,,,N,spe,exact,sov_09/30/25
+P0020,7721 W Snapdragon Street,Sioux Falls,SD,57106,083931,,N,spe,exact,sov_09/30/25
+P0020,Garage,Sioux Falls,SD,57106,,,N,spe,exact,sov_09/30/25
+P0020,7801 W Snapdragon Street,Sioux Falls,SD,57106,083930,,N,spe,exact,sov_09/30/25
+P0020,Garage,Sioux Falls,SD,57106,,,N,spe,exact,sov_09/30/25
+P0020,7805 W Snapdragon Street,Sioux Falls,SD,57106,083929,,N,spe,exact,sov_09/30/25
+P0020,Garage,Sioux Falls,SD,57106,,,N,spe,exact,sov_09/30/25
+P0020,7809 W Snapdragon Street,Sioux Falls,SD,57106,083928,,N,spe,exact,sov_09/30/25
+P0020,Garage,Sioux Falls,SD,57106,,,N,spe,exact,sov_09/30/25
+P0020,7813 W Snapdragon Street,Sioux Falls,SD,57106,083927,,N,spe,exact,sov_09/30/25
+P0020,Garage,Sioux Falls,SD,57106,,,N,spe,exact,sov_09/30/25
+P0045,7300 Graceland Drive,Omaha,NE,68134,,,Y,spe,exact,sov_09/30/25
+P0013,704 S Bristol Circle Unit #s 1 & 2,Wichita,KS,67207,00584684 / 30030037,,Y,spe,exact,sov_09/30/25
+P0013,707 S Bristol Circle Unit #s 57 & 58,Wichita,KS,67207,,,N,spe,exact,sov_09/30/25
+P0013,708 S Bristol Circle Unit #s 3 & 4,Wichita,KS,67207,00584685 / 30030038,,N,spe,exact,sov_09/30/25
+P0013,711 S Bristol Circle Unit #s 55 & 56,Wichita,KS,67207,,,N,spe,exact,sov_09/30/25
+P0013,712 S Bristol Circle Unit #s 5 & 6,Wichita,KS,67207,00584686 / 30030039,,N,spe,exact,sov_09/30/25
+P0013,715 S Bristol Circle Unit #s 53 & 54,Wichita,KS,67207,,,N,spe,exact,sov_09/30/25
+P0013,716 S Bristol Circle Unit #s 7 & 8,Wichita,KS,67207,00584687 / 30030040,,N,spe,exact,sov_09/30/25
+P0013,719 S Bristol Circle Unit #s 51 & 52,Wichita,KS,67207,,,N,spe,exact,sov_09/30/25
+P0013,720 S Bristol Circle Units #s 9 & 10,Wichita,KS,67207,00584688 / 30030041,,N,spe,exact,sov_09/30/25
+P0013,724 S Bristol Circle Unit #s 11 & 12,Wichita,KS,67207,00584689 / 30030042,,N,spe,exact,sov_09/30/25
+P0013,728 S Bristol Circle Unit #s 13 & 14,Wichita,KS,67207,,,N,spe,exact,sov_09/30/25
+P0013,802 S Bristol Circle Unit #18,Wichita,KS,67207,00584692 / 30030044,,N,spe,exact,sov_09/30/25
+P0013,803 S Bristol Circle Unit 49 & 50,Wichita,KS,67207,,,N,spe,exact,sov_09/30/25
+P0013,806 S Bristol Circle Unit #s 19 & 20,Wichita,KS,67207,00584693 / 30030045,,N,spe,exact,sov_09/30/25
+P0013,807 S Bristol Circle Unit #s 47 & 48,Wichita,KS,67207,,,N,spe,exact,sov_09/30/25
+P0013,810 S Bristol Circle Unit #s 21 & 22,Wichita,KS,67207,00584694,,N,spe,exact,sov_09/30/25
+P0013,811 S Bristol Circle Unit #s 45 & 46,Wichita,KS,67207,,,N,spe,exact,sov_09/30/25
+P0057,38th & Dodge / 115 South 38th Ave.,Omaha,NE,68131,,,Y,spe,exact,sov_09/30/25
+P0037,22718 W Angus Road,Gretna,NE,68028,,,Y,spe,exact,sov_09/30/25
+P0021,1400-1403 Buck Drive,Bellevue,NE,68005,,,Y,dba,exact,sov_09/30/25
+P0021,1402-1404 Lee Drive,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,1405-1407 Buck Drive,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,1406-1408 Lee Drive,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,1501-1503 Buck Drive,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,1502 Lee Drive,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,1504-1506 Lee Drive,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,1508-1510,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,Detatched Garage,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,Detatched Garage,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,Detatched Garage,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,Detatched Garage,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,Detatched Garage,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,Detatched Garage,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,Detatched Garage,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,Detatched Garage,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0021,Detatched Garage,Bellevue,NE,68005,,,N,dba,exact,sov_09/30/25
+P0061,6990 Dodge Street Bldg. 1,Omaha,NE,68132,2115200900,,Y,spe,exact,sov_09/30/25
+P0061,6990 Dodge Street Bldg. 2,Omaha,NE,68132,2115200900,,N,spe,exact,sov_09/30/25
+P0061,6990 Dodge Street Bldg. 3,Omaha,NE,68132,2115200900,,N,spe,exact,sov_09/30/25
+P0061,6990 Dodge Street Bldg. 4,Omaha,NE,68132,2115200900,,N,spe,exact,sov_09/30/25
+P0061,6990 Dodge Street Bldg. 5,Omaha,NE,68132,2115200900,,N,spe,exact,sov_09/30/25
+P0061,6990 Dodge Street Bldg. 6,Omaha,NE,68132,2115200900,,N,spe,exact,sov_09/30/25
+P0061,6990 Dodge Street Bldg. 7,Omaha,NE,68132,2115200900,,N,spe,exact,sov_09/30/25
+P0061,6990 Dodge Street Bldg. 8,Omaha,NE,68132,2115200900,,N,spe,exact,sov_09/30/25
+P0061,6990 Dodge Street Bldg. 9,Omaha,NE,68132,2115200900,,N,spe,exact,sov_09/30/25
+P0061,6990 Dodge Street Bldg. 10,Omaha,NE,68132,2115200900,,N,spe,exact,sov_09/30/25
+P0061,6990 Dodge Street Clubhouse,Omaha,NE,68132,2115200900,,N,spe,exact,sov_09/30/25
+P0018,3900-3907 Doral Drive,Rapid City,SD,57702,,,Y,spe,exact,sov_09/30/25
+P0018,3924-3931 Doral Drive,Rapid City,SD,57702,,,N,spe,exact,sov_09/30/25
+P0018,3932-3939 Doral Drive,Rapid City,SD,57702,,,N,spe,exact,sov_09/30/25
+P0018,3940-3947 Doral Drive,Rapid City,SD,57702,,,N,spe,exact,sov_09/30/25
+P0018,3911-3915 Doral Drive,Rapid City,SD,57702,,,N,spe,exact,sov_09/30/25
+P0018,3916-3923 Doral Drive,Rapid City,SD,57702,,,N,spe,exact,sov_09/30/25
+P0018,3948-3951 Doral Drive,Rapid City,SD,57702,,,N,spe,exact,sov_09/30/25
+P0030,CB 4 plexes,,,,,,Y,spe,exact,sov_09/30/25
+P0055,201 S 31st Street,Council Bluffs,IA,51501,,,Y,spe,exact,sov_09/30/25
+P0055,3705 Twin City Drive,Council Bluffs,IA,51501,,,Y,spe,exact,sov_09/30/25
+P0055,3007 35th Avenue,Council Bluffs,IA,51501,,,Y,spe,exact,sov_09/30/25
+P0055,4036 Rawlins Drive,Council Bluffs,IA,51501,,,Y,spe,exact,sov_09/30/25
+P0063,3104 State Street,Omaha,NE,68112,,,Y,spe,sold_section,sov_09/30/25
+P0064,617 S 35TH ST,Omaha,NE,68105,,,Y,spe,sold_section,sov_09/30/25
+P0065,4544 Nicholas Street,Omaha,NE,68132,,,Y,spe,sold_section,sov_09/30/25
+P0065,4509 Lafayette Avenue,Omaha,NE,68132,,,N,spe,sold_section,sov_09/30/25
+P0066,4813 Underwood Avenue,Omaha,NE,68132,,,Y,spe,sold_section,sov_09/30/25
+P0067,505 Wilshire Drive,Bellevue,NE,68005,,,Y,spe,sold_section,sov_09/30/25
+P0068,115 S 38th Street,Omaha,NE,68131,,,Y,spe,sold_section,sov_09/30/25
+P0069,123 S 39th Street,Omaha,NE,68131,,,Y,spe,sold_section,sov_09/30/25
+P0070,2437 2nd Avenue,Council Bluffs,IA,51501,,,Y,spe,sold_section,sov_09/30/25
+P0071,2518 Woolworth Avenue,Omaha,NE,68110,,,Y,spe,sold_section,sov_09/30/25
+P0072,356 N 40th Street,Omaha,NE,68110,,,Y,spe,sold_section,sov_09/30/25
+P0073,829 6th Avenue,Council Bluffs,IA,51501,,,Y,spe,sold_section,sov_09/30/25
+P0074,213 N 30th Street,Council Bluffs,IA,51501,,,Y,spe,sold_section,sov_09/30/25
+P0075,816-818 S 26th Street,Omaha,NE,68105,,,Y,spe,sold_section,sov_09/30/25
+P0076,2609-2611 Marcy Street,Omaha,NE,68105,,,Y,spe,sold_section,sov_09/30/25
+P0077,2602-2604 Marcy Street,Omaha,NE,68105,,,Y,spe,sold_section,sov_09/30/25
+P0078,117 S 25th Street,Omaha,NE,68131,,,Y,spe,sold_section,sov_09/30/25
+P0079,2573 Poppleton Avenue,Omaha,NE,68105,,,Y,spe,sold_section,sov_09/30/25
+P0080,916/918 S 25th Street,Omaha,NE,68105,,,Y,spe,sold_section,sov_09/30/25
+P0081,Omaha,NE,68105,,,,Y,spe,sold_section,sov_09/30/25
+P0082,2705 Leavenworth Street,Omaha,NE,68105,,,Y,spe,sold_section,sov_09/30/25
+P0083,116 N 37th Street Bldg 1,Omaha,NE,68131,0503450000,,Y,spe,sold_section,sov_09/30/25
+P0084,3510 Gertrude Street,Bellevue,NE,68147,010357238,,Y,spe,sold_section,sov_09/30/25
+P0085,536 S 31st Avenue,Omaha,NE,68131,2101430000,,Y,spe,sold_section,sov_09/30/25
+P0086,5205 S 21st Street,Omaha,NE,68107,0728120000,,Y,spe,sold_section,sov_09/30/25
+P0087,2416 S. 16th St,Omaha,NE,68108,,,Y,spe,sold_section,sov_09/30/25
+P0088,4319-4325 S 22nd Street,Omaha,NE,68107,,,Y,spe,sold_section,sov_09/30/25
+P0089,2400 Hickman Road Bldg. 1,Des Moines,IA,50310,,,Y,spe,sold_section,sov_09/30/25
+P0089,2400 Hickman Road Bldg. 2,Des Moines,IA,50310,,,N,spe,sold_section,sov_09/30/25
+P0089,2400 Hickman Road Bldg. 3,Des Moines,IA,50310,,,N,spe,sold_section,sov_09/30/25
+P0089,2400 Hickman Road Bldg. 4,Des Moines,IA,50310,,,N,spe,sold_section,sov_09/30/25
+P0089,2400 Hickman Road Bldg. 5,Des Moines,IA,50310,,,N,spe,sold_section,sov_09/30/25
+P0089,2310 Hickman Road Bldg. 6,Des Moines,IA,50310,,,N,spe,sold_section,sov_09/30/25
+P0089,2210 Hickman Road Bldg. 7,Des Moines,IA,50310,,,N,spe,sold_section,sov_09/30/25
+P0089,2330 Hickman Road Bldg. 8,Des Moines,IA,50310,,,N,spe,sold_section,sov_09/30/25
+P0090,135 E Sheridan Street,Papillion,NE,68046,,,Y,spe,sold_section,sov_09/30/25
+P0091,4915/4917 Davenport Street,Omaha,NE,68132,,,Y,spe,sold_section,sov_09/30/25
+P0092,3419 Dewey Avenue,Omaha,NE,68105,,,Y,spe,sold_section,sov_09/30/25
+P0093,3146 Chicago Street,Omaha,NE,68131,,,Y,spe,sold_section,sov_09/30/25
+P0094,2564 Marcy Street,Omaha,NE,68105,1713200003,,Y,spe,sold_section,sov_09/30/25
+P0095,100 E Otway Street,Odessa,MO,64076,,,Y,spe,sold_section,sov_09/30/25
+P0095,208 N 1st Street,Odessa,MO,64076,,,N,spe,sold_section,sov_09/30/25
+P0095,304 N 3rd Street,Odessa,MO,64076,,,N,spe,sold_section,sov_09/30/25
+P0095,305 W Otway Street,Odessa,MO,64076,,,N,spe,sold_section,sov_09/30/25
+P0096,2501 Leavenworth Street,Omaha,NE,68105,s 1713040001 & 1713040003,,Y,spe,sold_section,sov_09/30/25
+P0097,12182 Sumak Lane,Blair,NE,68008,,,Y,spe,sold_section,sov_09/30/25
+P0099,3807 & 3809 S 24th Street,Omaha,NE,68105,,,Y,spe,sold_section,sov_09/30/25
+P0100,3860 Dodge Street,Omaha,NE,68131,0910800000,,Y,spe,sold_section,sov_09/30/25
+P0101,101 S 38th Avenue Building 1,Omaha,NE,68131,,,Y,spe,sold_section,sov_09/30/25
+P0101,101 S 38th Avenue Building 2,Omaha,NE,68131,,,N,spe,sold_section,sov_09/30/25
+P0101,115 S 38th Avenue,Omaha,NE,68131,,,N,spe,sold_section,sov_09/30/25
+P0102,117 S 38th Avenue,Omaha,NE,68131,,,Y,spe,sold_section,sov_09/30/25
+P0103,12052 Sumak Lane,Blair,NE,68008,,,Y,spe,sold_section,sov_09/30/25
+P0104,Vacant Land - Lucy's Landing Sub Lot 2,Blair,NE,68008,,,Y,spe,sold_section,sov_09/30/25
+P0105,3265 Davenport Street,Omaha,NE,68131,,,Y,spe,sold_section,sov_09/30/25
+P0106,2408 S 10th,Lincoln,NE,68502,,,Y,spe,sold_section,sov_09/30/25
+P0107,814 S 18,Lincoln,NE,68508,,,Y,spe,sold_section,sov_09/30/25
+P0108,2438 S 10th,Lincoln,NE,68502,,,Y,spe,sold_section,sov_09/30/25
+P0109,1730 S 17th,Lincoln,NE,68502,,,Y,spe,sold_section,sov_09/30/25
+P0110,4520 Baldwin,Lincoln,NE,68504,,,Y,spe,sold_section,sov_09/30/25
+P0111,2433 E Street,Lincoln,NE,68510,,,Y,spe,sold_section,sov_09/30/25
+P0112,4927 Walker,Lincoln,NE,68504,,,Y,spe,sold_section,sov_09/30/25
+P0113,4501 Tranquility Drive,Lincoln,NE,68504,,,Y,spe,sold_section,sov_09/30/25
+P0114,4541 Tranquility Drive,Lincoln,NE,68504,,,Y,spe,sold_section,sov_09/30/25
+P0115,4541 Tranquility Drive - Garage 1,Lincoln,NE,68504,,,Y,spe,sold_section,sov_09/30/25
+P0116,4541 Tranquility Drive - Garage 2,Lincoln,NE,68504,,,Y,spe,sold_section,sov_09/30/25
+P0117,4541 Tranquility Drive - Garage 3,Lincoln,NE,68504,,,Y,spe,sold_section,sov_09/30/25
+P0118,4541 Tranquility Drive - Garage 4,Lincoln,NE,68504,,,Y,spe,sold_section,sov_09/30/25
+P0119,1624 Garfield,Lincoln,NE,68502,,,Y,spe,sold_section,sov_09/30/25
+P0120,1621 G Street,Lincoln,NE,68508,,,Y,spe,sold_section,sov_09/30/25
+P0121,2206 K Street,Omaha,NE,68107,,,Y,spe,sold_section,sov_09/30/25
+P0122,112 South 36th Street,Omaha,NE,68131,0503630000,,Y,spe,sold_section,sov_09/30/25
+P0123,13763 Poppleton Circle,Omaha,NE,68144,,,Y,spe,sold_section,sov_09/30/25
+P0124,316 East 15th Street,Sioux Falls,SD,57104,,,Y,spe,sold_section,sov_09/30/25
+P0125,3309 S Jefferson Avenue,Sioux Falls,SD,57105,,,Y,spe,sold_section,sov_09/30/25
+P0126,3313 S Jefferson Avenue,Sioux Falls,SD,57105,,,Y,spe,sold_section,sov_09/30/25
+P0126,Builders' Risk Types of Construction and CSP Codes:,,,,,,N,spe,sold_section,sov_09/30/25
+P0126,Frame,,,,,,N,spe,sold_section,sov_09/30/25
+P0126,"Buildings where the exterior walls are wood or other combustible materials including construction where the combustible materials are combined with other materials such as brick veneer, stone veneer, wood iron-clad and stucco on wood.",,,,,,N,spe,sold_section,sov_09/30/25
+P0126,Joisted Masonry,,,,,,N,spe,sold_section,sov_09/30/25
+P0126,"Buildings where the exterior walls are constructed of masonry materials such as adobe, brick, concrete, gypsum block, hollow concrete block, stone, tiles or similar materials and where the floors and roof are combustible.",,,,,,N,spe,sold_section,sov_09/30/25
+P0126,Non-Combustible,,,,,,N,spe,sold_section,sov_09/30/25
+P0126,"Buildings where the exterior walls and the floors are constructed of, and supported by metal, asbestos, gypsum or other non-combustible materials.",,,,,,N,spe,sold_section,sov_09/30/25
+P0126,Masonry Non-Combustible,,,,,,N,spe,sold_section,sov_09/30/25
+P0126,"Buildings where the exterior walls are constructed of masonry materials as described in Joisted Masonry above, with the floors and roof of metal or other non-combustible materials.",,,,,,N,spe,sold_section,sov_09/30/25
+P0126,Modified Fire Resistive,,,,,,N,spe,sold_section,sov_09/30/25
+P0126,Buildings where the exterior walls and the floors and roof are constructed of masonry of fire resistive materials with a fire resistance rating of one hour or more but less than two hours.,,,,,,N,spe,sold_section,sov_09/30/25
+P0126,Fire Resistive,,,,,,N,spe,sold_section,sov_09/30/25
+P0126,Buildings where the exterior walls and the floors and roof are constructed of masonry or fire resistive materials having a fire resistance rating of not less than two hours.,,,,,,N,spe,sold_section,sov_09/30/25
